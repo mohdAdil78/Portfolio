@@ -1,0 +1,127 @@
+export const projectsData = [
+  {
+    id: 1,
+    title: "Autonomous Rover System using Arduino",
+    subtitle: "Robotics • Embedded Systems • C/C++",
+    description: "Designed and implemented an autonomous mobile rover platform based on the Arduino microcontroller, capable of real-time obstacle detection and navigation.",
+    longDescription: "Designed and implemented an autonomous mobile rover platform based on the Arduino microcontroller, capable of real-time obstacle detection and navigation. The system integrates ultrasonic distance sensors (HC-SR04) to continuously measure the surrounding environment and transmit distance data to the Arduino for processing. A motor driver module (L298N) controls the DC gear motors, enabling directional movement such as forward motion, turning, and obstacle avoidance. The control algorithm processes sensor inputs and dynamically adjusts motor outputs to ensure safe navigation and collision avoidance. The rover performs autonomous path correction by evaluating obstacle proximity and selecting alternative movement directions. This project demonstrates practical experience in embedded systems design, sensor interfacing, real-time data processing, and robotic control systems, highlighting the integration of hardware and software for autonomous robotic applications.",
+    image: "/projects/autonomous-rover.png",
+    technologies: ["Arduino Uno", "HC-SR04 Ultrasonic Sensor", "L298N Motor Driver", "DC Gear Motors", "Embedded C", "Arduino IDE", "Robotics Control"],
+    features: [
+      { icon: "Activity", title: "Obstacle Detection", description: "Real-time distance measurement using HC-SR04 ultrasonic sensors for continuous environmental scanning." },
+      { icon: "Brain", title: "Autonomous Navigation", description: "Dynamic motor control algorithms using L298N for path correction, turning, and collision avoidance." },
+      { icon: "Zap", title: "Real-time Processing", description: "Instantaneous sensor data processing via Arduino Uno to execute immediate movement adjustments." },
+      { icon: "Code2", title: "Embedded C Integration", description: "Low-level hardware-software interfacing demonstrating practical robotics capability." }
+    ],
+    skills: ["Embedded Systems", "Sensor Interfacing", "Robotic Control", "Hardware/Software Integration", "C++ Programming"],
+    demoLink: "#",
+    githubLink: "#"
+  },
+  {
+    id: 2,
+    title: "Automated FTIR Spectral Analysis System",
+    subtitle: "Spectroscopy • Data Analysis • Python",
+    description: "Developed an automated system for FTIR (Fourier Transform Infrared) spectroscopy data analysis to detect functional groups and identify spectral features such as peaks and minima.",
+    longDescription: "Developed an automated system for FTIR (Fourier Transform Infrared) spectroscopy data analysis to detect functional groups and identify spectral features such as peaks and minima. FTIR spectral data was collected using the Alpha II FTIR spectrometer device, which measures infrared absorption to analyze molecular structures. The system applies preprocessing techniques including baseline correction, noise reduction, and normalization to improve data quality. Automated algorithms were implemented to accurately detect peaks and minima within the spectra and identify functional groups such as –OH, –CH, and C=O. Visualization tools such as heatmaps and Principal Component Analysis (PCA) were used to represent spectral patterns and trends across datasets. This framework improves accuracy, scalability, and efficiency in FTIR data analysis while reducing manual interpretation errors.",
+    image: "/projects/ftir-analysis.png",
+    technologies: ["Python", "NumPy", "SciPy", "Pandas", "Matplotlib", "PCA", "HTML", "CSS", "JavaScript"],
+    features: [
+      { icon: "Activity", title: "Noise Reduction", description: "Applied advanced preprocessing techniques including baseline correction and normalization to improve data quality." },
+      { icon: "BarChart2", title: "Peak Detection", description: "Automated algorithms to accurately detect peaks and minima within the spectra for molecular structure analysis." },
+      { icon: "Brain", title: "Functional Group ID", description: "Identify specific functional groups such as –OH, –CH, and C=O based on the spectral features." },
+      { icon: "Table", title: "PCA Visualization", description: "Employed Principal Component Analysis and heatmaps to represent spectral patterns and trends across datasets." }
+    ],
+    skills: ["Data Analysis", "Spectroscopy", "Python", "Machine Learning", "Data Visualization"],
+    demoLink: "#",
+    githubLink: "#"
+  },
+  {
+    id: 3,
+    title: "Shanthi Sagar Catchment GIS Analysis",
+    subtitle: "GIS • Remote Sensing • Machine Learning",
+    description: "Geospatial analysis of the Shanthi Sagar Lake catchment using GIS and remote sensing for LULC classification with a Random Forest classifier on Sentinel-2 satellite imagery.",
+    longDescription: "Performed a geospatial analysis of the Shanthi Sagar Lake catchment area using GIS and remote sensing techniques to study land use patterns and environmental characteristics. Processed Sentinel-2 satellite imagery in Google Earth Engine (JavaScript) to generate False Color Composite (FCC) images and perform Land Use Land Cover (LULC) classification. A Random Forest machine learning classifier was used to identify land categories such as water bodies, forests, built-up areas, horticulture, and agriculture. The project demonstrates practical experience in satellite image processing, spatial data analysis, and environmental monitoring for sustainable resource management.",
+    image: "/projects/gis-catchment.png",
+    technologies: ["QGIS", "Google Earth Engine", "JavaScript", "Sentinel-2", "Remote Sensing", "Random Forest"],
+    features: [
+      { icon: "Brain", title: "Random Forest Classification", description: "Machine learning classifier applied to Sentinel-2 bands to categorize land covers — water, forest, built-up, horticulture, and agriculture." },
+      { icon: "Activity", title: "False Color Composite (FCC)", description: "Sentinel-2 imagery processed in Google Earth Engine to produce FCC visualizations that highlight vegetation and water bodies." },
+      { icon: "Table", title: "LULC Mapping in QGIS", description: "Land Use Land Cover maps generated and styled in QGIS for spatial analysis, area calculation, and cartographic presentation." },
+      { icon: "BarChart2", title: "Environmental Monitoring", description: "Catchment-level analysis supports sustainable lake management by identifying land use change patterns over the study area." }
+    ],
+    skills: ["GIS Analysis", "Satellite Image Processing", "Land Use Classification", "Remote Sensing", "Spatial Data Analysis", "Environmental Monitoring"],
+    demoLink: "#",
+    githubLink: "#"
+  },
+  {
+    id: 4,
+    title: "Automatic Solar Tracking System",
+    subtitle: "Embedded Systems • Renewable Energy • Arduino",
+    description: "A dual-axis solar tracking system that automatically aligns a solar panel with the sun's position to maximize energy generation using LDR sensors and servo motors controlled by Arduino Uno.",
+    longDescription: "Designed and developed a dual-axis solar tracking system that automatically aligns a solar panel with the sun's position to maximize energy generation. The system uses LDR (Light Dependent Resistor) sensors to detect sunlight intensity and an Arduino Uno microcontroller to process sensor data and control servo motors that adjust the panel's orientation in both horizontal and vertical directions. The tracking mechanism continuously maintains the solar panel perpendicular to the sun's rays, improving energy conversion efficiency compared to fixed solar panels. The system integrates a light sensing module, microcontroller-based control unit, servo motor actuation, and solar panel hardware to enable real-time sunlight tracking throughout the day. This project demonstrates practical implementation of embedded systems, sensor integration, and renewable energy optimization, with the potential to increase solar energy output by up to 40% compared to stationary solar panels.",
+    image: "/projects/solar-tracker.png",
+    technologies: ["Arduino Uno", "LDR Sensors", "Servo Motors", "Embedded Programming", "Solar Panel", "Resistor Network", "Breadboard Circuit Design"],
+    features: [
+      { icon: "Brain", title: "Dual-Axis Tracking", description: "Servo motors independently adjust horizontal and vertical angles to keep the panel perpendicular to sunlight throughout the day." },
+      { icon: "Activity", title: "LDR Sensor Array", description: "Four LDR sensors continuously measure differential light intensity to compute the optimal panel orientation in real time." },
+      { icon: "Table", title: "Arduino Control Unit", description: "Arduino Uno processes analog sensor readings and drives servo motors using a closed-loop feedback control algorithm." },
+      { icon: "BarChart2", title: "Up to 40% More Efficiency", description: "Compared to a fixed solar panel, the tracking system captures significantly more direct sunlight across all daylight hours." }
+    ],
+    skills: ["Embedded Systems", "Sensor Integration", "Servo Motor Control", "Renewable Energy", "Circuit Design", "Arduino Programming"],
+    demoLink: "#",
+    githubLink: "#"
+  },
+  {
+    id: 5,
+    title: "Python Keylogging & Monitoring Demonstration",
+    subtitle: "Cybersecurity Research • Python Automation • System Monitoring",
+    description: "A Python-based educational monitoring tool demonstrating keystroke logging, screen capture, and automated email-based reporting for cybersecurity research.",
+    longDescription: "Developed a Python-based monitoring tool for educational cybersecurity research, demonstrating how keystroke logging and screen capture mechanisms function at the system level. The project includes structured log storage, periodic screenshot capture, and automated email-based reporting for analysis purposes. It also supports compilation into a standalone executable for controlled testing environments. Built using Python with modular architecture, environment-based configuration, and file handling mechanisms, the project highlights understanding of system monitoring concepts, data logging, automation, and secure configuration management.",
+    image: "/projects/keylogger.png",
+    technologies: ["Python", "SMTP", "OS Module", "PyAutoGUI", "File Handling", "Environment Variables"],
+    features: [
+      { icon: "Brain", title: "Keystroke Logging", description: "Captures and stores keystrokes locally with structured file-based log management for analysis." },
+      { icon: "Activity", title: "Periodic Screen Capture", description: "Automated screenshots at configurable intervals using PyAutoGUI for visual activity monitoring." },
+      { icon: "Table", title: "Email-Based Reporting", description: "Automated SMTP-based email dispatch to send logs and screenshots to a configured recipient." },
+      { icon: "BarChart2", title: "Standalone Executable", description: "Supports compilation into a portable .exe using PyInstaller for controlled testing environments." }
+    ],
+    skills: ["System-Level Programming", "Secure Config Management", "Automation Scripting", "Cybersecurity Concepts", "Data Logging"],
+    demoLink: "#",
+    githubLink: "#"
+  },
+  {
+    id: 6,
+    title: "AI Content Generator",
+    description: "AI-powered content generation tool with multiple templates",
+    longDescription: "An innovative AI-powered content generation platform that helps users create high-quality content across multiple formats. Features include customizable templates, tone adjustment, SEO optimization, and batch processing capabilities.",
+    image: "/projects/ai-content.jpg",
+    technologies: ["Python", "TensorFlow", "FastAPI", "React", "OpenAI"],
+    features: ["AI Content Generation", "Template Library", "SEO Optimization", "Batch Processing"],
+    demoLink: "https://demo-ai-content.com",
+    githubLink: "https://github.com/username/ai-content-generator"
+  },
+  {
+    id: 7,
+    title: "Enterprise Sales Analytics Platform",
+    subtitle: "Business Intelligence • Machine Learning • Analytics",
+    description: "End-to-end BI solution with ML forecasting, anomaly detection, and an Excel-style data interface for enterprise sales intelligence.",
+    longDescription: "Built an end-to-end business intelligence solution with ML forecasting, real-time anomaly detection, and an Excel-style data interface. The platform analyzes sales data using Random Forest and time-series models to generate forecasts with confidence intervals while detecting anomalies statistically. Includes a bi-directional synced spreadsheet module with Excel import/export, formula support, and live dashboard updates. Developed using Python, Streamlit, Scikit-Learn, and Plotly with a responsive dark UI optimized for large datasets.",
+    image: "/projects/analytics-platform.png",
+    technologies: ["Python", "Streamlit", "Scikit-Learn", "Plotly", "Pandas", "Machine Learning"],
+    features: [
+      { icon: "Brain", title: "ML Forecasting", description: "Random Forest and time-series predictions with confidence intervals" },
+      { icon: "Activity", title: "Real-Time Anomaly Detection", description: "Statistical monitoring to identify unusual sales behavior instantly" },
+      { icon: "Table", title: "Spreadsheet Interface", description: "Excel-style grid with formula support and live bi-directional sync" },
+      { icon: "BarChart2", title: "Interactive BI Dashboard", description: "Dynamic charts and visualizations powered by Plotly" }
+    ],
+    metrics: {
+      accuracy: "92%",
+      data: "Millions",
+      speed: "Real-time",
+      deployment: "Cloud Ready"
+    },
+    skills: ["Machine Learning", "Data Engineering", "Full-Stack Analytics", "BI Dashboard Development"],
+    demoLink: "https://demo-sales-analytics.com",
+    githubLink: "https://github.com/username/sales-analytics-platform"
+  }
+];
