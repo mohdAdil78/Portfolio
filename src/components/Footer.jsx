@@ -4,10 +4,10 @@ import { Github, Linkedin, Instagram, Mail, Heart } from 'lucide-react';
 
 const Footer = () => {
   const socialLinks = [
-    { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Mail, href: '#', label: 'Email' },
+    { icon: Github, href: 'https://github.com/mohdAdil78', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/mohammed-adil-288888249/', label: 'LinkedIn' },
+    { icon: Instagram, href: 'https://www.instagram.com/_.m.adil._/', label: 'Instagram' },
+    { icon: Mail, href: 'mailto:mohdadil9cse@gmail.com', label: 'Email' },
   ];
 
   return (
@@ -20,19 +20,24 @@ const Footer = () => {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
+            className="flex flex-col items-center md:items-start text-center md:text-left"
           >
-            <h3 className="text-2xl font-bold gradient-text mb-4">Portfolio</h3>
-            <p className="text-text-secondary mb-4">
-              Passionate frontend developer creating beautiful and functional web experiences.
+            <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#a855f7] via-[#6366f1] to-[#22d3ee] mb-4">
+              Mohammed Adil
+            </h3>
+            <p className="text-text-secondary mb-6 max-w-sm">
+              Passionate Frontend Developer & UI/UX Designer specialized in creating smooth, interactive, and user-friendly web experiences.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex gap-4">
               {socialLinks.map((social, index) => (
                 <motion.a
                   key={social.label}
                   href={social.href}
-                  whileHover={{ scale: 1.2, rotate: 5 }}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.2, y: -4 }}
                   whileTap={{ scale: 0.9 }}
-                  className="text-text-muted hover:text-accent-primary transition-all duration-300 hover:shadow-glow-primary"
+                  className="w-10 h-10 rounded-xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center text-[#94a3b8] hover:text-white hover:bg-[#3b82f6]/10 hover:border-[#3b82f6]/30 transition-all duration-300"
                   aria-label={social.label}
                 >
                   <social.icon size={20} />
@@ -47,6 +52,7 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
+            className="flex flex-col items-center md:items-start text-center md:text-left"
           >
             <h4 className="text-lg font-semibold text-text-primary mb-4">Quick Links</h4>
             <ul className="space-y-2">
@@ -54,7 +60,7 @@ const Footer = () => {
                 <li key={item}>
                   <a
                     href={`#${item.toLowerCase()}`}
-                    className="text-text-muted hover:text-accent-primary transition-all duration-300 hover:shadow-glow-secondary"
+                    className="text-text-muted hover:text-[#3b82f6] transition-all duration-300"
                   >
                     {item}
                   </a>
@@ -69,16 +75,17 @@ const Footer = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
+            className="flex flex-col items-center md:items-start text-center md:text-left"
           >
             <h4 className="text-lg font-semibold text-text-primary mb-4">Get In Touch</h4>
             <div className="space-y-2 text-text-secondary">
               <p>Ready to bring your ideas to life?</p>
               <p>Let's create something amazing together.</p>
               <a
-                href="mailto:contact@example.com"
-                className="text-accent-secondary hover:text-accent-primary transition-all duration-300 hover:shadow-glow-secondary"
+                href="mailto:mohdadil9cse@gmail.com"
+                className="text-[#3b82f6] hover:text-[#06b6d4] transition-all duration-300 font-medium"
               >
-                contact@example.com
+                mohdadil9cse@gmail.com
               </a>
             </div>
           </motion.div>

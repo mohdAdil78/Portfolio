@@ -292,7 +292,7 @@ const Contact = () => {
                       ? 'border-red-500/50 focus:border-red-500/50 focus:ring-red-500/20'
                       : 'border-glass-border focus:border-accent-primary/50 focus:ring-accent-primary/20'
                       }`}
-                    placeholder="john@example.com"
+                    placeholder="mohdadil9cse@gmail.com"
                   />
                   {fieldErrors.email && (
                     <p className="mt-1 text-sm text-red-400 flex items-center gap-1">

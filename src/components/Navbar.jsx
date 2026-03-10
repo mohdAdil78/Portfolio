@@ -75,13 +75,15 @@ const Navbar = () => {
           height: '4rem',
         }}
       >
-        {/* Logo */}
+        {/* Brand Identity - Top Left */}
         <button
           onClick={() => scrollTo('home')}
-          className="text-2xl font-bold gradient-text hover:opacity-80 transition-opacity flex-shrink-0"
+          className="text-xl sm:text-2xl font-black transition-all hover:scale-[1.02] flex-shrink-0 z-50 group"
           style={{ background: 'none', border: 'none', cursor: 'pointer' }}
         >
-          MA
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#a855f7] via-[#6366f1] to-[#22d3ee] drop-shadow-[0_0_15px_rgba(168,85,247,0.3)] group-hover:drop-shadow-[0_0_20px_rgba(34,211,238,0.5)] transition-all">
+            Mohammed Adil
+          </span>
         </button>
 
         {/* Desktop Nav */}
@@ -91,8 +93,8 @@ const Navbar = () => {
               key={id}
               onClick={() => scrollTo(id)}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${activeSection === id
-                  ? 'text-accent-primary'
-                  : 'text-text-secondary hover:text-text-primary'
+                ? 'text-accent-primary'
+                : 'text-text-secondary hover:text-text-primary'
                 }`}
               style={{
                 background: activeSection === id ? 'rgba(124,124,255,0.15)' : 'transparent',
@@ -138,8 +140,8 @@ const Navbar = () => {
                   key={id}
                   onClick={() => scrollTo(id)}
                   className={`flex items-center gap-3 w-full px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 text-left ${activeSection === id
-                      ? 'text-accent-primary'
-                      : 'text-text-secondary hover:text-text-primary'
+                    ? 'text-accent-primary'
+                    : 'text-text-secondary hover:text-text-primary'
                     }`}
                   style={{
                     background: activeSection === id ? 'rgba(124,124,255,0.12)' : 'transparent',

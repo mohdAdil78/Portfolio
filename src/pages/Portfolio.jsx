@@ -81,9 +81,9 @@ const Portfolio = () => {
 
       title: 'Shanthi Sagar Catchment GIS Analysis',
 
-      subtitle: 'GIS • Remote Sensing • Machine Learning',
+      subtitle: 'IISc & IEEE Collaboration • GIS • Remote Sensing',
 
-      description: 'Performed a geospatial analysis of the Shanthi Sagar Lake catchment area using GIS and remote sensing to study land use patterns. Processed Sentinel-2 imagery in Google Earth Engine for LULC classification using a Random Forest classifier.',
+      description: 'Geospatial analysis of the Shanthi Sagar Lake catchment using GIS and remote sensing, completed as a research internship in collaboration with IISc and IEEE.',
 
       technologies: ['QGIS', 'Google Earth Engine', 'JavaScript', 'Sentinel-2', 'Remote Sensing', 'Random Forest'],
 
@@ -99,11 +99,11 @@ const Portfolio = () => {
 
       id: 4,
 
-      title: 'Automatic Solar Tracking System',
+      title: 'Dual-Axis Solar Tracking System',
 
-      subtitle: 'Embedded Systems • Renewable Energy • Arduino',
+      subtitle: '1st Place Winner • Embedded Systems • Arduino',
 
-      description: 'Designed and developed a dual-axis solar tracking system that automatically aligns a solar panel with the sun to maximize energy output using LDR sensors and servo motors controlled by Arduino Uno.',
+      description: 'A high-efficiency dual-axis solar tracking system that automatically aligns with the sun to maximize energy generation. Won 1st place at a regional project exhibition in Mangalore.',
 
       technologies: ['Arduino Uno', 'LDR Sensors', 'Servo Motors', 'Embedded Programming', 'Solar Panel', 'Resistor Network', 'Breadboard Circuit Design'],
 
@@ -255,122 +255,34 @@ const Portfolio = () => {
 
 
 
-  const education = [
 
+
+
+  const techStackCategories = [
     {
-
-      title: 'Computer Science Degree',
-
-      description: 'Bachelor of Science in Computer Science with focus on Software Engineering.',
-
-      techStack: ['Algorithms', 'Data Structures', 'Software Design'],
-
-      liveUrl: '#',
-
-      githubUrl: '#',
-
-      icon: '🎓'
-
+      title: 'Languages',
+      techs: ['JavaScript', 'Python', 'Java', 'C', 'SQL', 'TypeScript']
     },
-
     {
-
-      title: 'Web Development Bootcamp',
-
-      description: 'Intensive bootcamp covering modern web development technologies and practices.',
-
-      techStack: ['HTML/CSS', 'JavaScript', 'React', 'Node.js'],
-
-      liveUrl: '#',
-
-      githubUrl: '#',
-
-      icon: '💻'
-
+      title: 'Frontend',
+      techs: ['HTML5', 'CSS3', 'React.js', 'Next.js', 'Tailwind CSS', 'Bootstrap']
+    },
+    {
+      title: 'Backend & APIs',
+      techs: ['Node.js', 'REST APIs']
+    },
+    {
+      title: 'Databases',
+      techs: ['MongoDB', 'MySQL']
+    },
+    {
+      title: 'Cloud & Tools',
+      techs: ['Google Cloud Platform (GCP)', 'Vercel', 'Git', 'GitHub', 'Postman']
+    },
+    {
+      title: 'Embedded & GIS',
+      techs: ['Arduino', 'QGIS', 'GRASS GIS', 'PCA']
     }
-
-  ];
-
-
-
-  const techStack = [
-
-    // Languages
-
-    'JavaScript',
-
-    'Python',
-
-    'Java',
-
-    'C',
-
-    'SQL',
-
-    'TypeScript',
-
-
-
-    // Frontend
-
-    'HTML5',
-
-    'CSS3',
-
-    'React.js',
-
-    'Next.js',
-
-    'Tailwind CSS',
-
-    'Bootstrap',
-
-
-
-    // Backend & APIs
-
-    'Node.js',
-
-    'REST APIs',
-
-
-
-    // Databases
-
-    'MongoDB',
-
-    'MySQL',
-
-
-
-    // Cloud & Deployment
-
-    'Google Cloud Platform (GCP)',
-
-    'Vercel',
-
-
-
-    // Tools & Platforms
-
-    'Git',
-
-    'GitHub',
-
-    'Postman',
-
-
-
-    // Hardware / Embedded / GIS
-
-    'Arduino',
-
-    'QGIS',
-
-    'GRASS GIS',
-
-    'PCA'
-
   ];
 
 
@@ -419,12 +331,30 @@ const Portfolio = () => {
 
         return (
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
+          <div className="space-y-16">
 
-            {techStack.map((tech, index) => (
+            {techStackCategories.map((category, catIndex) => (
+              <motion.div
+                key={category.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: catIndex * 0.1 }}
+              >
+                <div className="flex items-center gap-4 mb-8">
+                  <h3 className="text-xl font-bold text-white whitespace-nowrap">
+                    <span className="text-accent-primary mr-2">//</span>
+                    {category.title}
+                  </h3>
+                  <div className="h-[1px] w-full bg-gradient-to-r from-white/10 to-transparent" />
+                </div>
 
-              <TechStackCard key={index} tech={tech} index={index} />
-
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
+                  {category.techs.map((tech, index) => (
+                    <TechStackCard key={index} tech={tech} index={index} />
+                  ))}
+                </div>
+              </motion.div>
             ))}
 
           </div>

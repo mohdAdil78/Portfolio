@@ -190,6 +190,18 @@ const ProjectModal = ({ isOpen, onClose }) => {
 /* ─── Main Home Component ────────────────────────────────────────────────── */
 const Home = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Auto-slide logic
+  useEffect(() => {
+    if (isHovered) return;
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev === 0 ? 1 : 0));
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [isHovered]);
+
   const techStack = ['React', 'JavaScript', 'Java', 'Python', 'IoT', 'GIS'];
 
   const socialLinks = [
@@ -228,7 +240,7 @@ const Home = () => {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="lg:pr-4"
+              className="lg:pr-4 flex flex-col items-center lg:items-start text-center lg:text-left"
             >
               <div className="pt-8 sm:pt-12 lg:pt-0" />
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.6 }} className="mb-4">
@@ -252,7 +264,7 @@ const Home = () => {
               </motion.p>
 
               {/* CTA Buttons */}
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6, duration: 0.6 }} className="flex flex-wrap gap-4 mb-10">
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6, duration: 0.6 }} className="flex flex-col sm:flex-row flex-wrap justify-center lg:justify-start gap-4 mb-10 w-full sm:w-auto">
                 <button onClick={() => scrollTo('portfolio')} className="group relative flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-[15px] text-white transition-all shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:-translate-y-1 w-full sm:w-auto" style={{ background: 'linear-gradient(135deg, #8b5cf6, #3b82f6)' }}>
                   <span className="absolute inset-0 rounded-xl bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
                   View Portfolio <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -263,8 +275,8 @@ const Home = () => {
               </motion.div>
 
               {/* Socials & Small Tech Stack */}
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7, duration: 0.6 }} className="flex items-center gap-6">
-                <div className="flex space-x-3">
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7, duration: 0.6 }} className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+                <div className="flex gap-3">
                   {socialLinks.map((social) => (
                     <motion.a
                       key={social.label} href={social.href} target="_blank" rel="noopener noreferrer"
@@ -276,137 +288,218 @@ const Home = () => {
                     </motion.a>
                   ))}
                 </div>
-                <div className="w-px h-8 bg-white/10" />
-                <div className="flex gap-2">
-                  <span className="text-[#94a3b8] text-sm"><span className="text-white font-bold">12+</span> Projects</span>
-                  <span className="text-[#94a3b8] text-sm">•</span>
-                  <span className="text-[#94a3b8] text-sm">Tech Enthusiast</span>
+                <div className="hidden sm:block w-px h-8 bg-white/10" />
+                <div className="flex gap-2 text-sm">
+                  <span className="text-[#94a3b8]"><span className="text-white font-bold">12+</span> Projects</span>
+                  <span className="text-[#94a3b8]">•</span>
+                  <span className="text-[#94a3b8]">Tech Enthusiast</span>
                 </div>
               </motion.div>
             </motion.div>
 
-            {/* ── Right Content: Premium Futuristic Showcase Card ────────────── */}
-            <motion.div
-              initial={{ opacity: 0, x: 50, scale: 0.95 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.3 }}
-              className="relative w-full flex justify-center mt-10 lg:mt-0 viewpoint-card group"
-            >
-              {/* Added a max-width container to force the compact 520px-600px width limit */}
+            {/* ── Right Content: Rotating Research Carousel ────────────── */}
+            <div className="relative w-full flex flex-col items-center mt-10 lg:mt-0 viewpoint-card group">
               <div className="w-full max-w-[540px] relative">
-
-                {/* Outer Animated Glow Ring */}
-                <div className="absolute -inset-[2px] rounded-[30px] bg-gradient-to-br from-[#8b5cf6] via-[#3b82f6] to-[#06b6d4] opacity-[0.25] blur-[12px] group-hover:opacity-[0.4] group-hover:blur-[18px] transition-all duration-700 animate-pulse" />
-
+                {/* Carousel Container with Hover Detection */}
                 <div
-                  className="relative w-full rounded-[28px] overflow-hidden p-[1px] glass transition-all"
-                  style={{
-                    background: 'linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.01) 100%)',
-                    boxShadow: '0 25px 50px -12px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.2)'
-                  }}
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
+                  className="relative w-full overflow-hidden"
                 >
-                  {/* Abstract visual background behind card content */}
-                  <div className="absolute inset-0 bg-[#070b19] opacity-95" />
-                  <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay" />
-                  <motion.div animate={{ rotate: 360 }} transition={{ duration: 100, repeat: Infinity, ease: 'linear' }} className="absolute -top-[50%] -right-[50%] w-[150%] h-[150%] bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.08)_0%,transparent_50%)] pointer-events-none" />
-
-                  {/* ── Card Content ── Reduced padding to p-6 sm:p-8 */}
-                  <div className="relative z-10 p-6 sm:p-8 flex flex-col h-full pointer-events-auto">
-
-                    {/* Top Animated Badge - Scaled down 20% by using text-[10px] and tighter padding */}
-                    <div className="self-start relative mb-5 group/badge">
-                      <div className="absolute inset-0 bg-gradient-to-r from-[#8b5cf6] to-[#06b6d4] rounded-full blur-[6px] opacity-40 group-hover/badge:opacity-70 transition-opacity duration-300"></div>
-                      <div className="relative flex items-center gap-2 px-3 py-1.5 bg-[#0a0d20] border border-[#8b5cf6]/40 rounded-full font-bold text-[10px] tracking-widest text-white uppercase shadow-[inset_0_1px_rgba(255,255,255,0.1)]">
-                        <span className="text-[11px]">🚀</span>
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#cdd6f4] to-[#ffffff]">Ongoing Research Project</span>
-                      </div>
-                    </div>
-
-                    {/* Main Title & Description - Slightly smaller font and tighter line height */}
-                    <h3 className="text-xl sm:text-[26px] font-extrabold text-white leading-[1.2] mb-3">
-                      AI-Driven Autonomous <br />
-                      <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#8b5cf6] via-[#3b82f6] to-[#06b6d4]">
-                        Agricultural Monitoring System
-                      </span>
-                    </h3>
-                    <p className="text-[13px] sm:text-[14px] text-[#94a3b8] leading-[1.5] mb-5">
-                      Developing an intelligent monitoring platform that integrates IoT sensors, machine learning, and GIS analytics to optimize agricultural productivity.
-                    </p>
-
-                    {/* Interactive Progress Section - Reduced margins & padding */}
-                    <div className="mb-5 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.05] shadow-[inset_0_1px_rgba(255,255,255,0.05)] relative overflow-hidden group/prog">
-                      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#3b82f6]/30 to-transparent"></div>
-                      <div className="flex justify-between items-center mb-2 font-semibold">
-                        <span className="text-[12px] text-[#cdd6f4] flex items-center gap-1.5"><Activity size={14} className="text-[#3b82f6]" /> Development Progress</span>
-                        <span className="text-lg text-white font-bold drop-shadow-[0_0_10px_rgba(59,130,246,0.5)]">45%</span>
-                      </div>
-
-                      {/* Reduced Progress Bar Width to 85% visually, but logically keep percentage correct */}
-                      <div className="w-full sm:w-[90%] h-[6px] bg-[#03040b] rounded-full overflow-hidden shadow-inner border border-white/5 relative mb-2">
-                        {/* Animated Glow inside track */}
-                        <div className="absolute inset-0 bg-[#3b82f6] opacity-10"></div>
-                        <motion.div
-                          initial={{ width: 0 }}
-                          whileInView={{ width: '45%' }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1.5, ease: "easeOut" }}
-                          className="h-full bg-gradient-to-r from-[#8b5cf6] to-[#06b6d4] rounded-full relative"
-                        >
-                          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full blur-[2px] opacity-80" />
-                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent w-full" style={{ animation: 'shimmer 2s infinite linear', transform: 'translateX(-100%)' }} />
-                        </motion.div>
-                      </div>
-
-                      {/* Tiny status indicator below */}
-                      <div className="flex justify-between text-[9px] font-bold tracking-wider text-[#64748b] uppercase w-full sm:w-[90%]">
-                        <span>Research & Prototype</span>
-                        <span>Phase 1</span>
-                      </div>
-                    </div>
-
-                    {/* 3 Glowing Feature Blocks - Tighter grid, smaller icons */}
-                    <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-6">
-                      {[
-                        { i: Radio, t: 'IoT Sensors', c: '#8b5cf6' },
-                        { i: Brain, t: 'Machine Learning', c: '#3b82f6' },
-                        { i: Map, t: 'GIS Integration', c: '#06b6d4' }
-                      ].map((Item, idx) => (
-                        <div key={idx} className="flex flex-col items-center justify-center py-3 px-2 rounded-[14px] bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.05] hover:border-white/[0.1] transition-all duration-300 group/icon cursor-default relative overflow-hidden">
-                          {/* Hover flare */}
-                          <div className="absolute -inset-2 bg-gradient-radial from-[var(--c)] to-transparent opacity-0 group-hover/icon:opacity-10 transition-opacity duration-300 blur-[6px]" style={{ '--c': Item.c }} />
-                          <Item.i size={18} className="mb-1.5 transition-transform duration-300 group-hover/icon:scale-110 group-hover/icon:-translate-y-0.5" style={{ color: Item.c, filter: `drop-shadow(0 0 8px ${Item.c}60)` }} />
-                          <span className="text-[10px] font-bold text-[#e2e8f0] text-center uppercase tracking-wide leading-[1.1] group-hover/icon:text-white transition-colors">{Item.t}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Compacted Gradient CTA Button */}
-                    <div className="mt-auto">
-                      <button
-                        onClick={() => setIsModalOpen(true)}
-                        className="relative w-full group/btn overflow-hidden flex items-center justify-center gap-2 py-3.5 sm:py-4 rounded-xl font-bold text-[14px] text-white transition-all transform hover:-translate-y-0.5"
+                  <AnimatePresence mode="wait">
+                    {currentSlide === 0 ? (
+                      <motion.div
+                        key="project1"
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -50 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        drag="x"
+                        dragConstraints={{ left: 0, right: 0 }}
+                        onDragEnd={(e, { offset, velocity }) => {
+                          if (offset.x < -100) setCurrentSlide(1);
+                        }}
+                        className="relative w-full rounded-[28px] overflow-hidden p-[1px] glass shadow-[0_25px_50px_-12px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.2)]"
                       >
-                        {/* Button Background Layers */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-[#8b5cf6] via-[#3b82f6] to-[#06b6d4] transition-all duration-500 group-hover/btn:scale-[1.05]" />
-                        <div className="absolute inset-0 bg-gradient-to-r from-[#3b82f6] via-[#06b6d4] to-[#8b5cf6] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500" />
+                        {/* Outer Animated Glow Ring */}
+                        <div className="absolute -inset-[2px] rounded-[30px] bg-gradient-to-br from-[#8b5cf6] via-[#3b82f6] to-[#06b6d4] opacity-[0.25] blur-[12px] group-hover:opacity-[0.4] group-hover:blur-[18px] transition-all duration-700 animate-pulse" />
 
-                        {/* Subsurface animated glow */}
-                        <div className="absolute inset-0 bg-white/20 blur-[15px] scale-y-0 group-hover/btn:scale-y-100 transition-transform duration-500" />
+                        <div className="absolute inset-0 bg-[#070b19] opacity-95" />
+                        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay" />
 
-                        {/* Button Shadow Glow */}
-                        <div className="absolute inset-0 rounded-xl shadow-[0_10px_20px_rgba(59,130,246,0.3)] group-hover/btn:shadow-[0_15px_30px_rgba(59,130,246,0.5)] transition-shadow duration-500" />
+                        <div className="relative z-10 p-6 sm:p-8 flex flex-col h-full">
+                          {/* Top Animated Badge */}
+                          <div className="self-start relative mb-5 group/badge">
+                            <div className="absolute inset-0 bg-gradient-to-r from-[#8b5cf6] to-[#06b6d4] rounded-full blur-[6px] opacity-40 animate-pulse"></div>
+                            <div className="relative flex items-center gap-2 px-3 py-1.5 bg-[#0a0d20] border border-[#8b5cf6]/40 rounded-full font-bold text-[10px] tracking-widest text-white uppercase">
+                              <span className="text-[11px] animate-bounce">🚀</span>
+                              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#cdd6f4] to-[#ffffff]">Ongoing Research Project</span>
+                            </div>
+                          </div>
 
-                        <div className="relative z-10 flex items-center gap-2 drop-shadow-sm">
-                          <Sparkles size={16} className="group-hover/btn:animate-pulse" />
-                          <span>View Project Details</span>
+                          <h3 className="text-xl sm:text-[26px] font-extrabold text-white leading-[1.2] mb-3">
+                            AI-Driven Autonomous <br />
+                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#8b5cf6] via-[#3b82f6] to-[#06b6d4]">
+                              Agricultural Monitoring System
+                            </span>
+                          </h3>
+                          <p className="text-[13px] sm:text-[14px] text-[#94a3b8] leading-[1.5] mb-5">
+                            Developing an intelligent monitoring platform that integrates IoT sensors, machine learning, and GIS analytics to optimize agricultural productivity.
+                          </p>
+
+                          {/* Progress Section */}
+                          <div className="mb-5 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.05] relative overflow-hidden">
+                            <div className="flex justify-between items-center mb-2 font-semibold">
+                              <span className="text-[12px] text-[#cdd6f4] flex items-center gap-1.5"><Activity size={14} className="text-[#3b82f6]" /> Development Progress</span>
+                              <span className="text-lg text-white font-bold drop-shadow-[0_0_10px_rgba(59,130,246,0.5)]">45%</span>
+                            </div>
+                            <div className="w-full sm:w-[90%] h-[6px] bg-[#03040b] rounded-full overflow-hidden border border-white/5 relative mb-2">
+                              <motion.div
+                                initial={{ width: 0 }}
+                                animate={{ width: '45%' }}
+                                transition={{ duration: 1.5 }}
+                                className="h-full bg-gradient-to-r from-[#8b5cf6] to-[#06b6d4] rounded-full relative"
+                              >
+                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent w-full shimmer-animation" />
+                              </motion.div>
+                            </div>
+                            <div className="flex justify-between text-[9px] font-bold tracking-wider text-[#64748b] uppercase w-full">
+                              <span>Research & Prototype</span>
+                              <span>Phase 1</span>
+                            </div>
+                          </div>
+
+                          {/* Feature Blocks */}
+                          <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-6">
+                            {[
+                              { i: Radio, t: 'IoT Sensors', c: '#8b5cf6' },
+                              { i: Brain, t: 'Machine Learning', c: '#3b82f6' },
+                              { i: Map, t: 'GIS Integration', c: '#06b6d4' }
+                            ].map((Item, idx) => (
+                              <div key={idx} className="flex flex-col items-center justify-center py-3 px-2 rounded-[14px] bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.05] transition-all">
+                                <Item.i size={18} className="mb-1.5" style={{ color: Item.c, filter: `drop-shadow(0 0 8px ${Item.c}60)` }} />
+                                <span className="text-[10px] font-bold text-[#e2e8f0] text-center uppercase tracking-wide leading-[1.1]">{Item.t}</span>
+                              </div>
+                            ))}
+                          </div>
+
+                          <button
+                            onClick={() => setIsModalOpen(true)}
+                            className="relative w-full group/btn overflow-hidden flex items-center justify-center gap-2 py-3.5 sm:py-4 rounded-xl font-bold text-[14px] text-white transition-all transform hover:-translate-y-0.5"
+                          >
+                            <div className="absolute inset-0 bg-gradient-to-r from-[#8b5cf6] via-[#3b82f6] to-[#06b6d4]" />
+                            <div className="relative z-10 flex items-center gap-2">
+                              <Sparkles size={16} />
+                              <span>View Project Details</span>
+                            </div>
+                          </button>
                         </div>
-                      </button>
-                    </div>
+                      </motion.div>
+                    ) : (
+                      <motion.div
+                        key="project2"
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -50 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        drag="x"
+                        dragConstraints={{ left: 0, right: 0 }}
+                        onDragEnd={(e, { offset, velocity }) => {
+                          if (offset.x > 100) setCurrentSlide(0);
+                        }}
+                        className="relative w-full rounded-[28px] overflow-hidden p-[1px] glass shadow-[0_25px_50px_-12px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.2)]"
+                      >
+                        {/* Outer Animated Glow Ring (Gold/Amber Theme) */}
+                        <div className="absolute -inset-[2px] rounded-[30px] bg-gradient-to-br from-[#f59e0b] via-[#ef4444] to-[#8b5cf6] opacity-[0.25] blur-[12px] group-hover:opacity-[0.4] group-hover:blur-[18px] transition-all duration-700 animate-pulse" />
 
-                  </div>
+                        <div className="absolute inset-0 bg-[#070b19] opacity-95" />
+                        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay" />
+
+                        <div className="relative z-10 p-6 sm:p-8 flex flex-col h-full">
+                          {/* Top Animated Badge */}
+                          <div className="self-start relative mb-5 group/badge">
+                            <div className="absolute inset-0 bg-gradient-to-r from-[#f59e0b] to-[#ef4444] rounded-full blur-[6px] opacity-40 animate-pulse"></div>
+                            <div className="relative flex items-center gap-2 px-3 py-1.5 bg-[#0a0d20] border border-[#f59e0b]/40 rounded-full font-bold text-[10px] tracking-widest text-white uppercase">
+                              <span className="text-[11px] animate-pulse">⚡</span>
+                              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#fbbf24] to-[#f59e0b]">Upcoming Research</span>
+                            </div>
+                          </div>
+
+                          <h3 className="text-xl sm:text-[26px] font-extrabold text-white leading-[1.2] mb-3">
+                            Next Generation Smart <br />
+                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#f59e0b] via-[#ef4444] to-[#8b5cf6]">
+                              Environmental Intelligence Platform
+                            </span>
+                          </h3>
+                          <p className="text-[13px] sm:text-[14px] text-[#94a3b8] leading-[1.5] mb-5">
+                            Building an advanced AI-powered platform combining IoT networks, predictive analytics, and geospatial intelligence for climate resilience.
+                          </p>
+
+                          {/* Status Indicator */}
+                          <div className="mb-5 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.05] relative overflow-hidden group/status">
+                            <div className="flex justify-between items-center mb-2">
+                              <span className="text-[12px] text-[#cdd6f4] flex items-center gap-1.5"><Activity size={14} className="text-[#f59e0b]" /> Status</span>
+                              <div className="flex items-center gap-2">
+                                <div className="w-2 h-2 rounded-full bg-[#f59e0b] animate-ping" />
+                                <span className="text-sm text-[#f59e0b] font-bold">Work in Progress</span>
+                              </div>
+                            </div>
+                            <div className="w-full sm:w-[90%] h-[6px] bg-[#03040b] rounded-full overflow-hidden border border-white/5 relative mb-2">
+                              {/* Conceptual Research Pulse */}
+                              <motion.div
+                                animate={{ opacity: [0.3, 0.6, 0.3], width: ['0%', '15%', '0%'] }}
+                                transition={{ duration: 3, repeat: Infinity }}
+                                className="h-full bg-[#f59e0b] blur-[2px]"
+                              />
+                            </div>
+                            <div className="flex justify-between text-[9px] font-bold tracking-wider text-[#64748b] uppercase w-full">
+                              <span>Concept & Research Stage</span>
+                              <span className="text-[#f59e0b]">0%</span>
+                            </div>
+                          </div>
+
+                          {/* Feature Blocks */}
+                          <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-6">
+                            {[
+                              { i: BarChart2, t: 'AI Analytics', c: '#f59e0b' },
+                              { i: Cpu, t: 'Edge IoT', c: '#ef4444' },
+                              { i: Map, t: 'Global Mapping', c: '#8b5cf6' }
+                            ].map((Item, idx) => (
+                              <div key={idx} className="flex flex-col items-center justify-center py-3 px-2 rounded-[14px] bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.05] transition-all">
+                                <Item.i size={18} className="mb-1.5" style={{ color: Item.c, filter: `drop-shadow(0 0 8px ${Item.c}60)` }} />
+                                <span className="text-[10px] font-bold text-[#e2e8f0] text-center uppercase tracking-wide leading-[1.1]">{Item.t}</span>
+                              </div>
+                            ))}
+                          </div>
+
+                          <button
+                            className="relative w-full overflow-hidden flex items-center justify-center gap-2 py-3.5 sm:py-4 rounded-xl font-bold text-[14px] text-white/40 cursor-not-allowed border border-white/10 bg-white/[0.02]"
+                            title="Project details will be available soon."
+                          >
+                            <span className="relative z-10 flex items-center gap-2">
+                              <Shield size={16} />
+                              <span>Coming Soon</span>
+                            </span>
+                          </button>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Carousel Dots */}
+                <div className="flex justify-center gap-3 mt-6">
+                  {[0, 1].map((dot) => (
+                    <button
+                      key={dot}
+                      onClick={() => setCurrentSlide(dot)}
+                      className={`h-2 transition-all duration-300 rounded-full ${currentSlide === dot ? 'w-8 bg-gradient-to-r from-[#8b5cf6] to-[#06b6d4]' : 'w-2 bg-white/20'
+                        }`}
+                    />
+                  ))}
                 </div>
               </div>
-            </motion.div>
+            </div>
 
           </div>
 
@@ -431,7 +524,11 @@ const Home = () => {
       <style dangerouslySetInnerHTML={{
         __html: `
         @keyframes shimmer {
+          0% { transform: translateX(-100%); }
           100% { transform: translateX(100%); }
+        }
+        .shimmer-animation {
+          animation: shimmer 2s infinite linear;
         }
       `}} />
     </>

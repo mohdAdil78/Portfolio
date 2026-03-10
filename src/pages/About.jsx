@@ -5,9 +5,9 @@ import StatsCard from '../components/StatsCard';
 
 const About = () => {
   const stats = [
-    { icon: <Briefcase className="text-accent-primary" />, value: '25+', label: 'Total Projects' },
+    { icon: <Briefcase className="text-accent-primary" />, value: '12+', label: 'Total Projects' },
     { icon: <Award className="text-accent-secondary" />, value: '10+', label: 'Certificates' },
-    { icon: <GraduationCap className="text-glow-highlight" />, value: '5+', label: 'Qualifications' },
+    { icon: <GraduationCap className="text-glow-highlight" />, value: '3', label: 'Qualifications' },
   ];
 
   const navigateToCertificates = () => {
@@ -68,15 +68,18 @@ const About = () => {
           {/* Right - About Content */}
           <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-6">
             <div className="p-8">
-              <h3 className="text-2xl font-bold text-text-primary mb-4">Passionate Frontend Developer</h3>
+              <h3 className="text-2xl font-bold text-text-primary mb-4">Passionate Software & Technology Enthusiast</h3>
               <p className="text-text-secondary leading-relaxed mb-4">
-                I'm a creative frontend developer with a passion for building beautiful, functional, and user-centered digital experiences. With expertise in modern JavaScript frameworks and a keen eye for design, I transform ideas into elegant web solutions.
+                I'm an engineering graduate passionate about building innovative solutions using software, IoT, and data technologies. My journey started with curiosity and grew into hands-on experience in web development, embedded systems, and geospatial analysis.
               </p>
               <p className="text-text-secondary leading-relaxed mb-4">
-                My journey in web development started with curiosity and evolved into a career focused on creating impactful applications. I specialize in React ecosystem and stay updated with the latest industry trends and best practices.
+                I have worked on projects ranging from full-stack web applications to IoT systems, including a Dual-Axis Solar Tracking System that won 1st place at a project exhibition in Mangalore. I also completed a GIS research internship with IISc and IEEE, working on satellite imagery analysis using QGIS, GRASS GIS, and Google Cloud.
+              </p>
+              <p className="text-text-secondary leading-relaxed mb-4">
+                My interests include JavaScript development (React, Node.js), REST APIs, IoT, geospatial technologies, and data analysis, where I focus on building real-world problem-solving applications.
               </p>
               <p className="text-text-secondary leading-relaxed">
-                When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community.
+                Beyond coding, I explore emerging technologies, contribute to projects, and continuously expand my knowledge in software engineering, Industry 4.0, and intelligent systems.
               </p>
             </div>
 

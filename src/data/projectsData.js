@@ -38,9 +38,9 @@ export const projectsData = [
   {
     id: 3,
     title: "Shanthi Sagar Catchment GIS Analysis",
-    subtitle: "GIS • Remote Sensing • Machine Learning",
-    description: "Geospatial analysis of the Shanthi Sagar Lake catchment using GIS and remote sensing for LULC classification with a Random Forest classifier on Sentinel-2 satellite imagery.",
-    longDescription: "Performed a geospatial analysis of the Shanthi Sagar Lake catchment area using GIS and remote sensing techniques to study land use patterns and environmental characteristics. Processed Sentinel-2 satellite imagery in Google Earth Engine (JavaScript) to generate False Color Composite (FCC) images and perform Land Use Land Cover (LULC) classification. A Random Forest machine learning classifier was used to identify land categories such as water bodies, forests, built-up areas, horticulture, and agriculture. The project demonstrates practical experience in satellite image processing, spatial data analysis, and environmental monitoring for sustainable resource management.",
+    subtitle: "IISc & IEEE Collaboration • GIS • Remote Sensing",
+    description: "Geospatial analysis of the Shanthi Sagar Lake catchment using GIS and remote sensing, completed as a research internship in collaboration with IISc and IEEE.",
+    longDescription: "Performed a geospatial analysis of the Shanthi Sagar Lake catchment area using GIS and remote sensing techniques during a research internship in collaboration with IISc and IEEE. Processed Sentinel-2 satellite imagery in Google Earth Engine (JavaScript) to generate False Color Composite (FCC) images and perform Land Use Land Cover (LULC) classification. A Random Forest machine learning classifier was used to identify land categories such as water bodies, forests, built-up areas, horticulture, and agriculture. The project demonstrates practical experience in satellite image processing, spatial data analysis, and environmental monitoring for sustainable resource management.",
     image: "/projects/gis-catchment.png",
     technologies: ["QGIS", "Google Earth Engine", "JavaScript", "Sentinel-2", "Remote Sensing", "Random Forest"],
     features: [
@@ -55,9 +55,9 @@ export const projectsData = [
   },
   {
     id: 4,
-    title: "Automatic Solar Tracking System",
-    subtitle: "Embedded Systems • Renewable Energy • Arduino",
-    description: "A dual-axis solar tracking system that automatically aligns a solar panel with the sun's position to maximize energy generation using LDR sensors and servo motors controlled by Arduino Uno.",
+    title: "Dual-Axis Solar Tracking System",
+    subtitle: "1st Place Winner • Embedded Systems • Arduino",
+    description: "A high-efficiency dual-axis solar tracking system that automatically aligns with the sun to maximize energy generation. Won 1st place at a regional project exhibition in Mangalore.",
     longDescription: "Designed and developed a dual-axis solar tracking system that automatically aligns a solar panel with the sun's position to maximize energy generation. The system uses LDR (Light Dependent Resistor) sensors to detect sunlight intensity and an Arduino Uno microcontroller to process sensor data and control servo motors that adjust the panel's orientation in both horizontal and vertical directions. The tracking mechanism continuously maintains the solar panel perpendicular to the sun's rays, improving energy conversion efficiency compared to fixed solar panels. The system integrates a light sensing module, microcontroller-based control unit, servo motor actuation, and solar panel hardware to enable real-time sunlight tracking throughout the day. This project demonstrates practical implementation of embedded systems, sensor integration, and renewable energy optimization, with the potential to increase solar energy output by up to 40% compared to stationary solar panels.",
     image: "/projects/solar-tracker.png",
     technologies: ["Arduino Uno", "LDR Sensors", "Servo Motors", "Embedded Programming", "Solar Panel", "Resistor Network", "Breadboard Circuit Design"],
