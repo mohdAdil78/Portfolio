@@ -290,7 +290,7 @@ const Home = () => {
                 </div>
                 <div className="hidden sm:block w-px h-8 bg-white/10" />
                 <div className="flex gap-2 text-sm">
-                  <span className="text-[#94a3b8]"><span className="text-white font-bold">12+</span> Projects</span>
+                  <span className="text-[#94a3b8]"><span className="text-white font-bold">+5</span> Projects</span>
                   <span className="text-[#94a3b8]">•</span>
                   <span className="text-[#94a3b8]">Tech Enthusiast</span>
                 </div>

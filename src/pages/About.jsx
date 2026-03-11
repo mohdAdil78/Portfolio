@@ -5,7 +5,7 @@ import StatsCard from '../components/StatsCard';
 
 const About = () => {
   const stats = [
-    { icon: <Briefcase className="text-accent-primary" />, value: '12+', label: 'Total Projects' },
+    { icon: <Briefcase className="text-accent-primary" />, value: '+5', label: 'Total Projects' },
     { icon: <Award className="text-accent-secondary" />, value: '10+', label: 'Certificates' },
     { icon: <GraduationCap className="text-glow-highlight" />, value: '3', label: 'Qualifications' },
   ];
@@ -46,7 +46,7 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left - Profile Image */}
           <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative">
-            <div className="relative w-64 h-64 mx-auto lg:mx-0 group">
+            <div className="relative w-80 h-80 mx-auto group">
               <div className="absolute inset-0 bg-gradient-to-br from-accent-primary/30 to-glow-highlight/30 rounded-full blur-xl animate-glow group-hover:from-accent-primary/40 group-hover:to-glow-highlight/40 transition-all duration-300" />
               <div className="relative w-full h-full rounded-full overflow-hidden glass border-4 border-accent-primary/30 group-hover:border-accent-primary/50 transition-all duration-300 group-hover:scale-105">
                 <img

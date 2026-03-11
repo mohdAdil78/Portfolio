@@ -6,6 +6,8 @@ import ProjectCard from '../components/ProjectCard';
 
 import EducationTab from '../components/EducationTab';
 
+import ExperienceTab from '../components/ExperienceTab';
+
 import CertificateImageCard from '../components/CertificateImageCard';
 
 import TechStackCard from '../components/TechStackCard';
@@ -19,6 +21,7 @@ const Portfolio = () => {
   const tabs = [
     { id: 'projects', label: 'Projects' },
     { id: 'certificates', label: 'Certificates' },
+    { id: 'experience', label: 'Experience' },
     { id: 'education', label: 'Education' },
     { id: 'techstack', label: 'Tech Stack' },
   ];
@@ -322,6 +325,10 @@ const Portfolio = () => {
           </div>
 
         );
+
+      case 'experience':
+
+        return <ExperienceTab />;
 
       case 'education':
 

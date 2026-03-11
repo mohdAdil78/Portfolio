@@ -26,7 +26,7 @@ const Footer = () => {
               Mohammed Adil
             </h3>
             <p className="text-text-secondary mb-6 max-w-sm">
-              Passionate Frontend Developer & UI/UX Designer specialized in creating smooth, interactive, and user-friendly web experiences.
+              Engineering Graduate & Full-Stack Developer passionate about building modern web applications, IoT systems, and innovative technology solutions.
             </p>
             <div className="flex gap-4">
               {socialLinks.map((social, index) => (
