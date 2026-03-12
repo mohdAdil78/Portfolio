@@ -141,14 +141,16 @@ const ProjectDetails = () => {
 
           {/* Header CTAs */}
           <div className="flex gap-2 flex-shrink-0">
-            <motion.a href={project.demoLink} target="_blank" rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[13px] font-semibold text-white"
-              style={{ background: 'linear-gradient(135deg,#7C7CFF,#38BDF8)' }}
-              onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 0 16px rgba(124,124,255,0.5)'; }}
-              onMouseLeave={e => { e.currentTarget.style.boxShadow = 'none'; }}>
-              <ExternalLink size={13} /><span className="hidden sm:inline">Demo</span>
-            </motion.a>
+            {project.demoLink && project.demoLink !== "#" && (
+              <motion.a href={project.demoLink} target="_blank" rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[13px] font-semibold text-white"
+                style={{ background: 'linear-gradient(135deg,#7C7CFF,#38BDF8)' }}
+                onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 0 16px rgba(124,124,255,0.5)'; }}
+                onMouseLeave={e => { e.currentTarget.style.boxShadow = 'none'; }}>
+                <ExternalLink size={13} /><span className="hidden sm:inline">Demo</span>
+              </motion.a>
+            )}
             <motion.a href={project.githubLink} target="_blank" rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[13px] font-semibold text-text-secondary transition-all duration-200"
@@ -197,14 +199,16 @@ const ProjectDetails = () => {
 
               {/* CTA buttons */}
               <motion.div variants={fadeUp} transition={{ duration: 0.5, delay: 0.1 }} className="flex flex-wrap gap-3">
-                <motion.a href={project.demoLink} target="_blank" rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center gap-2 px-6 py-3 text-white rounded-xl font-bold text-sm transition-all duration-300"
-                  style={{ background: 'linear-gradient(135deg,#7C7CFF,#38BDF8)' }}
-                  onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 0 32px rgba(124,124,255,0.6)'; }}
-                  onMouseLeave={e => { e.currentTarget.style.boxShadow = 'none'; }}>
-                  <ExternalLink size={17} /> View Live Demo
-                </motion.a>
+                {project.demoLink && project.demoLink !== "#" && (
+                  <motion.a href={project.demoLink} target="_blank" rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+                    className="inline-flex items-center gap-2 px-6 py-3 text-white rounded-xl font-bold text-sm transition-all duration-300"
+                    style={{ background: 'linear-gradient(135deg,#7C7CFF,#38BDF8)' }}
+                    onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 0 32px rgba(124,124,255,0.6)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.boxShadow = 'none'; }}>
+                    <ExternalLink size={17} /> View Live Demo
+                  </motion.a>
+                )}
                 <motion.a href={project.githubLink} target="_blank" rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                   className="inline-flex items-center gap-2 px-6 py-3 text-text-primary rounded-xl font-bold text-sm transition-all duration-300"
@@ -459,14 +463,16 @@ const ProjectDetails = () => {
               <h2 className="text-xl font-bold text-text-primary mt-4 mb-2">Ready to explore?</h2>
               <p className="text-text-muted text-sm mb-8 max-w-sm mx-auto">See the platform in action or dive into the source code.</p>
               <div className="flex flex-wrap gap-4 justify-center">
-                <motion.a href={project.demoLink} target="_blank" rel="noopener noreferrer"
-                  whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.96 }}
-                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-bold text-[15px] text-white transition-all duration-300"
-                  style={{ background: 'linear-gradient(135deg,#7C7CFF,#38BDF8)' }}
-                  onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 0 40px rgba(124,124,255,0.6)'; }}
-                  onMouseLeave={e => { e.currentTarget.style.boxShadow = 'none'; }}>
-                  <ExternalLink size={18} /> View Live Demo
-                </motion.a>
+                {project.demoLink && project.demoLink !== "#" && (
+                  <motion.a href={project.demoLink} target="_blank" rel="noopener noreferrer"
+                    whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.96 }}
+                    className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-bold text-[15px] text-white transition-all duration-300"
+                    style={{ background: 'linear-gradient(135deg,#7C7CFF,#38BDF8)' }}
+                    onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 0 40px rgba(124,124,255,0.6)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.boxShadow = 'none'; }}>
+                    <ExternalLink size={18} /> View Live Demo
+                  </motion.a>
+                )}
                 <motion.a href={project.githubLink} target="_blank" rel="noopener noreferrer"
                   whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.96 }}
                   className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-bold text-[15px] text-text-primary transition-all duration-300"

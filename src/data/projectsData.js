@@ -86,8 +86,8 @@ export const projectsData = [
       { icon: "BarChart2", title: "Standalone Executable", description: "Supports compilation into a portable .exe using PyInstaller for controlled testing environments." }
     ],
     skills: ["System-Level Programming", "Secure Config Management", "Automation Scripting", "Cybersecurity Concepts", "Data Logging"],
-    demoLink: "#",
-    githubLink: "#"
+    demoLink: null,
+    githubLink: "https://github.com/mohdAdil78/Python-Keylogger"
   },
   {
     id: 6,
@@ -121,7 +121,7 @@ export const projectsData = [
       deployment: "Cloud Ready"
     },
     skills: ["Machine Learning", "Data Engineering", "Full-Stack Analytics", "BI Dashboard Development"],
-    demoLink: "https://demo-sales-analytics.com",
-    githubLink: "https://github.com/username/sales-analytics-platform"
+    demoLink: null,
+    githubLink: "https://github.com/mohdAdil78/enterprise-sales-analytics"
   }
 ];

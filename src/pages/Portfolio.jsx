@@ -130,10 +130,8 @@ const Portfolio = () => {
 
       technologies: ['Python', 'SMTP', 'OS Module', 'PyAutoGUI', 'File Handling', 'Environment Variables'],
 
-      demoLink: '#',
-
-      githubLink: '#',
-
+      demoLink: null,
+      githubLink: "https://github.com/mohdAdil78/Python-Keylogger",
       image: '/projects/keylogger.png'
 
     },
@@ -150,10 +148,8 @@ const Portfolio = () => {
 
       technologies: ['Python', 'Streamlit', 'Scikit-Learn', 'Plotly', 'Pandas', 'Machine Learning'],
 
-      demoLink: 'https://demo-sales-analytics.com',
-
-      githubLink: 'https://github.com/username/sales-analytics-platform',
-
+      demoLink: null,
+      githubLink: "https://github.com/mohdAdil78/enterprise-sales-analytics",
       image: '/projects/analytics-platform.png'
 
     }
