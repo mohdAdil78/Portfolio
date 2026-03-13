@@ -5,7 +5,7 @@ import StatsCard from '../components/StatsCard';
 
 const About = () => {
   const stats = [
-    { icon: <Briefcase className="text-accent-primary" />, value: '+5', label: 'Total Projects' },
+    { icon: <Briefcase className="text-accent-primary" />, value: '+6', label: 'Total Projects' },
     { icon: <Award className="text-accent-secondary" />, value: '10+', label: 'Certificates' },
     { icon: <GraduationCap className="text-glow-highlight" />, value: '3', label: 'Qualifications' },
   ];
@@ -70,16 +70,16 @@ const About = () => {
             <div className="p-8">
               <h3 className="text-2xl font-bold text-text-primary mb-4">Passionate Software & Technology Enthusiast</h3>
               <p className="text-text-secondary leading-relaxed mb-4">
-                I'm an engineering graduate passionate about building innovative solutions using software, IoT, and data technologies. My journey started with curiosity and grew into hands-on experience in web development, embedded systems, and geospatial analysis.
+                I'm an engineering graduate currently working as a Software Developer at Avedis, where I focus on building and maintaining scalable web platforms and applications. My journey started with curiosity and grew into hands-on experience in full-stack development, server infrastructure, and geospatial analysis.
               </p>
               <p className="text-text-secondary leading-relaxed mb-4">
-                I have worked on projects ranging from full-stack web applications to IoT systems, including a Dual-Axis Solar Tracking System that won 1st place at a project exhibition in Mangalore. I also completed a GIS research internship with IISc and IEEE, working on satellite imagery analysis using QGIS, GRASS GIS, and Google Cloud.
+                I have worked on diverse projects, from developing responsive real estate platforms using Next.js to winning 1st place for a Dual-Axis Solar Tracking System at a project exhibition in Mangalore. I also completed a GIS research internship with IISc and IEEE, conducting in-depth satellite imagery analysis using QGIS and Google Cloud.
               </p>
               <p className="text-text-secondary leading-relaxed mb-4">
-                My interests include JavaScript development (React, Node.js), REST APIs, IoT, geospatial technologies, and data analysis, where I focus on building real-world problem-solving applications.
+                My technical expertise spans JavaScript (React, Next.js, Node.js), Python, and IoT systems, with a strong focus on building efficient, real-world solutions. I enjoy solving complex problems through modular architecture and automation.
               </p>
               <p className="text-text-secondary leading-relaxed">
-                Beyond coding, I explore emerging technologies, contribute to projects, and continuously expand my knowledge in software engineering, Industry 4.0, and intelligent systems.
+                Beyond professional work, I continuously explore emerging technologies in Industry 4.0 and intelligent systems, always looking for opportunities to contribute to innovative research and development.
               </p>
             </div>
 

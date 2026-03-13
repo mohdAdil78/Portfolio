@@ -137,23 +137,15 @@ const Portfolio = () => {
     },
 
     {
-
       id: 7,
-
       title: 'Enterprise Sales Analytics Platform',
-
       subtitle: 'Business Intelligence • Machine Learning • Analytics',
-
       description: 'End-to-end BI solution with ML forecasting, real-time anomaly detection, and an Excel-style data interface for enterprise sales intelligence.',
-
       technologies: ['Python', 'Streamlit', 'Scikit-Learn', 'Plotly', 'Pandas', 'Machine Learning'],
-
       demoLink: null,
       githubLink: "https://github.com/mohdAdil78/enterprise-sales-analytics",
       image: '/projects/analytics-platform.png'
-
-    }
-
+    },
   ];
 
 
