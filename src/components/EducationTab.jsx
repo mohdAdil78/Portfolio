@@ -14,7 +14,8 @@ const EDUCATION = [
     side: 'left',
     icon: '🎓',
     color: '#7C7CFF',
-    glow: 'rgba(124,124,255,0.35)',
+    glow: 'rgba(124,124,255,0.45)',
+    status: 'Currently Pursuing',
   },
   {
     id: 2,
@@ -74,14 +75,20 @@ const EduCard = ({ edu, index }) => {
           transition: 'border-color 0.35s, box-shadow 0.35s',
         }}
         onMouseEnter={e => {
-          e.currentTarget.style.borderColor = edu.color + '55';
-          e.currentTarget.style.boxShadow = `0 0 32px ${edu.glow}, 0 8px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.10)`;
+          e.currentTarget.style.borderColor = edu.color + '70';
+          e.currentTarget.style.boxShadow = `0 12px 48px ${edu.glow}, 0 8px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.12)`;
+          e.currentTarget.style.transform = 'translateY(-6px) scale(1.02)';
         }}
         onMouseLeave={e => {
           e.currentTarget.style.borderColor = 'rgba(255,255,255,0.09)';
           e.currentTarget.style.boxShadow = '0 4px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.07)';
+          e.currentTarget.style.transform = 'translateY(0) scale(1)';
         }}
       >
+        {/* Floating Watermark Icon */}
+        <div className="absolute top-2 right-4 text-7xl opacity-[0.03] select-none pointer-events-none group-hover:opacity-[0.06] transition-opacity duration-500">
+          {edu.icon}
+        </div>
         {/* Gradient shimmer in corner on hover */}
         <div
           className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-500"
@@ -107,6 +114,12 @@ const EduCard = ({ edu, index }) => {
         >
           <Calendar size={11} />
           {edu.period}
+          {edu.status && (
+            <span className="flex items-center gap-1.5 ml-2 pl-2 border-l border-white/10">
+              <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+              {edu.status}
+            </span>
+          )}
         </div>
 
         {/* Degree row */}
@@ -356,18 +369,23 @@ const EducationTab = () => (
         top: '18px',
         bottom: '18px',
         width: '2px',
-        background: 'linear-gradient(to bottom, rgba(124,124,255,0.0) 0%, rgba(124,124,255,0.6) 15%, rgba(168,85,247,0.5) 50%, rgba(56,189,248,0.6) 85%, rgba(56,189,248,0.0) 100%)',
+        background: 'rgba(255,255,255,0.05)',
         borderRadius: '2px',
         zIndex: 1,
       }}>
-        {/* Inner glow */}
-        <div style={{
-          position: 'absolute', inset: '-1px',
-          background: 'inherit',
-          filter: 'blur(4px)',
-          opacity: 0.55,
-          borderRadius: '2px',
-        }} />
+        {/* Moving Glow Line */}
+        <motion.div
+          animate={{ top: ['0%', '100%'], opacity: [0, 1, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
+          style={{
+            position: 'absolute',
+            left: 0,
+            width: '100%',
+            height: '150px',
+            background: 'linear-gradient(to bottom, transparent, #7C7CFF, #38BDF8, transparent)',
+            borderRadius: '2px',
+          }}
+        />
       </div>
 
       {EDUCATION.map((edu, i) => (

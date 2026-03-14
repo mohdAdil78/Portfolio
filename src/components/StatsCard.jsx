@@ -10,9 +10,8 @@ const StatsCard = ({ stat, index, onClick }) => {
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ scale: 1.05 }}
       onClick={onClick}
-      className={`glass-card text-center group ${
-        onClick ? 'cursor-pointer hover:shadow-glow-primary' : ''
-      }`}
+      className={`glass-card text-center group ${onClick ? 'cursor-pointer hover:shadow-glow-primary' : ''
+        }`}
     >
       <div className="text-4xl mb-2 group-hover:scale-110 transition-transform duration-300">
         {stat.icon}
