@@ -172,9 +172,9 @@ const Contact = () => {
       let errorMessage = 'Failed to send message. Please try again later.';
 
       if (err.name === 'AbortError') {
-        errorMessage = 'Request timed out. Please check your connection and try again.';
-      } else if (err.message && err.message.includes('Failed to fetch')) {
-        errorMessage = 'Unable to connect to the server. Please make sure the backend is running on localhost:5000';
+        errorMessage = 'Request timed out. Please try again.';
+      } else if (err.message && (err.message.includes('Failed to fetch') || err.message.includes('NetworkError') || err.message.includes('ERR_CONNECTION_REFUSED'))) {
+        errorMessage = 'The contact service is currently unavailable. Please reach me directly at mohdadil9cse@gmail.com';
       } else if (err.message) {
         errorMessage = err.message;
       }

@@ -53,7 +53,7 @@ const ExpListCard = ({ exp, index }) => {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: index * 0.15, ease: 'easeOut' }}
-            whileHover={{ scale: 1.01, translateX: 8 }}
+            whileHover={{ scale: 1.01, x: 6 }}
             className="w-full relative group"
         >
             {/* Glowing left accent line */}
@@ -68,15 +68,15 @@ const ExpListCard = ({ exp, index }) => {
             <div
                 className="relative h-full flex flex-col md:flex-row gap-6 items-start md:items-center w-full"
                 style={{
-                    borderRadius: '16px',
-                    padding: '2rem',
-                    paddingLeft: '3rem', // Extra padding for the line
-                    background: 'rgba(255,255,255,0.03)',
-                    backdropFilter: 'blur(20px)',
-                    WebkitBackdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                    boxShadow: '0 4px 30px rgba(0,0,0,0.2)',
-                    transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                  borderRadius: '16px',
+                  padding: '2rem',
+                  paddingLeft: '3rem',
+                  background: 'rgba(255,255,255,0.03)',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  boxShadow: '0 4px 30px rgba(0,0,0,0.2)',
+                  transition: 'background 0.4s ease, border-color 0.4s ease',
                 }}
                 onMouseEnter={e => {
                     e.currentTarget.style.background = 'rgba(255,255,255,0.05)';

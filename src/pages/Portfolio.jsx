@@ -283,35 +283,21 @@ const Portfolio = () => {
     switch (activeTab) {
 
       case 'projects':
-
         return (
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
             {projects.map((project, index) => (
-
-              <ProjectCard key={index} project={project} index={index} />
-
+              <ProjectCard key={project.id} project={project} index={index} />
             ))}
-
           </div>
-
         );
 
       case 'certificates':
-
         return (
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
             {certificates.map((certificate, index) => (
-
               <CertificateImageCard key={index} certificate={certificate} index={index} />
-
             ))}
-
           </div>
-
         );
 
       case 'experience':
@@ -323,18 +309,15 @@ const Portfolio = () => {
         return <EducationTab />;
 
       case 'techstack':
-
         return (
-
           <div className="space-y-16">
-
             {techStackCategories.map((category, catIndex) => (
               <motion.div
                 key={category.title}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: catIndex * 0.1 }}
+                transition={{ duration: 0.5, delay: catIndex * 0.07 }}
               >
                 <div className="flex items-center gap-4 mb-8">
                   <h3 className="text-xl font-bold text-white whitespace-nowrap">
@@ -346,14 +329,12 @@ const Portfolio = () => {
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
                   {category.techs.map((tech, index) => (
-                    <TechStackCard key={index} tech={tech} index={index} />
+                    <TechStackCard key={tech} tech={tech} index={index} />
                   ))}
                 </div>
               </motion.div>
             ))}
-
           </div>
-
         );
 
       default:
@@ -466,22 +447,15 @@ const Portfolio = () => {
 
 
 
-        {/* Content Area */}
-
+        {/* Content Area with smooth fade transition */}
         <motion.div
-
-          initial={{ opacity: 0, y: 20 }}
-
+          key={activeTab}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-
-          transition={{ duration: 0.5 }}
-
+          transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
           className="w-full"
-
         >
-
           {renderContent()}
-
         </motion.div>
 
       </div>

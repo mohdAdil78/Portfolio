@@ -30,6 +30,10 @@
     /* Prevent horizontal scroll at the root */
     overflow-x: hidden;
     width: 100%;
+    /* Smoother font rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   body {
@@ -39,6 +43,8 @@
     width: 100%;
     /* Prevent ANY horizontal overflow */
     overflow-x: hidden;
+    /* GPU acceleration for the whole page */
+    backface-visibility: hidden;
     /* Layered background — defined inline so no broken CSS var refs */
     background-image:
       radial-gradient(ellipse at top,    rgba(124,124,255,0.15) 0%, transparent 50%),
@@ -166,9 +172,9 @@
   }
 
   /* Animation utility classes */
-  .floating-element { animation: float  8s ease-in-out infinite; }
-  .drifting-element { animation: drift 20s linear      infinite; }
-  .glowing-element  { animation: glow   3s ease-in-out infinite alternate; }
+  .floating-element { animation: float  8s ease-in-out infinite; will-change: transform; }
+  .drifting-element { animation: drift 20s linear      infinite; will-change: transform; }
+  .glowing-element  { animation: glow   3s ease-in-out infinite alternate; will-change: box-shadow; }
 
   /* ── Form & Input dark-theme overrides ──────────────────────────────── */
   .glass input,

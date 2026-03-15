@@ -55,7 +55,7 @@ const EduCard = ({ edu, index }) => {
       initial={{ opacity: 0, x: isLeft ? -60 : 60 }}
       animate={inView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: index * 0.12 }}
-      whileHover={{ scale: 1.025, y: -4 }}
+      whileHover={{ scale: 1.02, y: -6 }}
       style={{
         /* clip keeps Framer x-enter from creating horizontal scroll */
         overflow: 'clip',
@@ -77,12 +77,10 @@ const EduCard = ({ edu, index }) => {
         onMouseEnter={e => {
           e.currentTarget.style.borderColor = edu.color + '70';
           e.currentTarget.style.boxShadow = `0 12px 48px ${edu.glow}, 0 8px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.12)`;
-          e.currentTarget.style.transform = 'translateY(-6px) scale(1.02)';
         }}
         onMouseLeave={e => {
           e.currentTarget.style.borderColor = 'rgba(255,255,255,0.09)';
           e.currentTarget.style.boxShadow = '0 4px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.07)';
-          e.currentTarget.style.transform = 'translateY(0) scale(1)';
         }}
       >
         {/* Floating Watermark Icon */}
