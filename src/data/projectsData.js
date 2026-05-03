@@ -91,14 +91,24 @@ export const projectsData = [
   },
   {
     id: 6,
-    title: "AI Content Generator",
-    description: "AI-powered content generation tool with multiple templates",
-    longDescription: "An innovative AI-powered content generation platform that helps users create high-quality content across multiple formats. Features include customizable templates, tone adjustment, SEO optimization, and batch processing capabilities.",
-    image: "/projects/ai-content.jpg",
-    technologies: ["Python", "TensorFlow", "FastAPI", "React", "OpenAI"],
-    features: ["AI Content Generation", "Template Library", "SEO Optimization", "Batch Processing"],
-    demoLink: "https://demo-ai-content.com",
-    githubLink: "https://github.com/username/ai-content-generator"
+    title: "LingoGem AI Language Translator",
+    subtitle: "AI • NLP • React • API Integration • Speech Processing",
+    description: "Developed an AI-powered web application for real-time multilingual language translation. The system includes automatic language detection, voice input/output capabilities, and a responsive user interface for seamless interaction.",
+    longDescription: "Developed an AI-powered web application for real-time multilingual language translation. The system includes automatic language detection, voice input/output capabilities, and a responsive user interface for seamless interaction. Optimized performance to ensure fast and accurate translations, enhancing overall user experience.",
+    image: "/projects/lingogem.png",
+    technologies: ["AI", "NLP", "React", "API Integration", "Speech Processing"],
+    features: [
+      { icon: "Zap", title: "Real-time translation", description: "Instantaneous text and speech translation across multiple languages." },
+      { icon: "Brain", title: "Automatic language detection", description: "Intelligently identifies the source language without manual selection." },
+      { icon: "Activity", title: "Voice input & output", description: "Seamless speech-to-text and text-to-speech capabilities." },
+      { icon: "Layout", title: "Responsive UI", description: "Optimized for all devices ensuring a smooth user experience." },
+      { icon: "Code2", title: "API-based architecture", description: "Robust backend integration for fast and accurate processing." }
+    ],
+    skills: ["React", "NLP", "API Integration", "Performance Optimization"],
+    badge: "AI Project",
+    year: "2025",
+    demoLink: null,
+    githubLink: "https://github.com/mohdAdil78/AI-Translator"
   },
   {
     id: 7,

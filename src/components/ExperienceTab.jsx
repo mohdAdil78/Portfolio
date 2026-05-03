@@ -8,10 +8,10 @@ const EXPERIENCE = [
         id: 1,
         role: 'Software Developer',
         type: 'Full-time',
-        company: 'Avedis',
+        company: 'Amlak Al Arabia',
         location: 'Udupi, India',
         period: 'Jan 2026 - Present',
-        description: 'Currently working as a Software Developer at Avedis, responsible for developing and maintaining the company’s website and applications. Building and managing server infrastructure, implementing scalable backend and frontend solutions, and writing efficient code to support web platforms and services.',
+        description: 'Currently working as a Software Developer at Amlak Al Arabia, building and maintaining scalable web applications. Involved in server management, deployment, and performance optimization. Working on prompt engineering, client requirement handling, and SEO improvements, while also contributing to cybersecurity-focused development projects to enhance system security and reliability.',
         icon: <Code size={24} color="#10B981" />,
         color: '#10B981', // Emerald
         glow: 'rgba(16,185,129,0.4)',
@@ -50,10 +50,10 @@ const ExpListCard = ({ exp, index }) => {
     return (
         <motion.div
             ref={ref}
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: index * 0.15, ease: 'easeOut' }}
-            whileHover={{ scale: 1.01, x: 6 }}
+            transition={{ duration: 0.5, delay: index * 0.12, ease: [0.25, 1, 0.5, 1] }}
+            whileHover={{ scale: 1.01, x: 4 }}
             className="w-full relative group"
         >
             {/* Glowing left accent line */}

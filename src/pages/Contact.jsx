@@ -13,9 +13,9 @@ const SocialCard = ({ social, index }) => {
       rel={isEmail ? '' : 'noopener noreferrer'}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.1 }}
-      whileHover={{ scale: 1.02, x: 10 }}
+      viewport={{ once: true, margin: '-30px' }}
+      transition={{ delay: index * 0.08 }}
+      whileHover={{ scale: 1.02, y: -3 }}
       className="glass-card group cursor-pointer block"
       aria-label={`Visit ${social.title} profile`}
     >
@@ -188,10 +188,10 @@ const Contact = () => {
   const isFormValid = formData.name && formData.email && formData.message && Object.keys(fieldErrors).length === 0;
 
   return (
-    <section id="contact" style={{ minHeight: '100vh', overflowX: 'clip' }} className="py-20 relative space-section pt-28">
-      <div className="absolute top-10 right-10 w-80 h-80 bg-accent-primary/10 rounded-full blur-3xl drifting-element" />
-      <div className="absolute bottom-10 left-10 w-80 h-80 bg-glow-highlight/10 rounded-full blur-3xl drifting-element" style={{ animationDelay: '15s' }} />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style={{ overflowX: 'clip' }}>
+    <section id="contact" className="py-20 relative space-section pt-28 min-h-screen w-full overflow-hidden flex flex-col justify-center">
+      <div className="absolute top-10 right-10 w-80 h-80 bg-accent-primary/10 rounded-full blur-3xl drifting-element pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-80 h-80 bg-glow-highlight/10 rounded-full blur-3xl drifting-element pointer-events-none" style={{ animationDelay: '15s' }} />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -209,12 +209,13 @@ const Contact = () => {
           <div className="w-24 h-1 bg-gradient-nebula mx-auto rounded-full shadow-glow-primary" />
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12" style={{ overflowX: 'clip' }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full">
           {/* Left - Contact Form */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
+            className="w-full flex flex-col"
           >
             <div className="glass-card">
               <h3 className="text-2xl font-bold text-text-primary mb-6">Send a Message</h3>
@@ -362,10 +363,10 @@ const Contact = () => {
 
           {/* Right - Social Cards */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="space-y-6"
+            viewport={{ once: true, margin: "-50px" }}
+            className="space-y-6 w-full flex flex-col"
           >
             <div>
               <h3 className="text-2xl font-bold text-text-primary mb-6">Connect With Me</h3>

@@ -1,22 +1,23 @@
-import React from 'react';
+import React, { Suspense, useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Home from './pages/Home';
-import About from './pages/About';
-import Portfolio from './pages/Portfolio';
-import Contact from './pages/Contact';
-import ProjectDetails from './pages/ProjectDetails';
-import NotFound from './pages/NotFound';
+import ErrorBoundary from './components/ErrorBoundary';
+import GlobalLoader from './components/GlobalLoader';
+
+// Code-split pages — loaded only when needed
+const Home         = React.lazy(() => import('./pages/Home'));
+const About        = React.lazy(() => import('./pages/About'));
+const Portfolio    = React.lazy(() => import('./pages/Portfolio'));
+const Contact      = React.lazy(() => import('./pages/Contact'));
+const ProjectDetails = React.lazy(() => import('./pages/ProjectDetails'));
+const NotFound     = React.lazy(() => import('./pages/NotFound'));
 
 const MainPage = () => (
-  <div
-    className="min-h-screen flex flex-col"
-    style={{ backgroundColor: '#05070F', overflowX: 'hidden', width: '100%' }}
-  >
+  <div className="min-h-screen flex flex-col bg-space-primary w-full overflow-hidden">
     <Navbar />
-    {/* pt-16 = 64px — exactly the height of the fixed navbar */}
-    <main className="flex-1 pt-16" style={{ overflowX: 'hidden', width: '100%', minWidth: 0 }}>
+    {/* pt-16 = 64px — matches fixed navbar height */}
+    <main className="flex-1 pt-16 w-full overflow-hidden">
       <Home />
       <About />
       <Portfolio />
@@ -27,14 +28,42 @@ const MainPage = () => (
 );
 
 const App = () => {
+  const [fontsReady, setFontsReady] = useState(false);
+
+  useEffect(() => {
+    let mounted = true;
+
+    // Wait only for fonts — no artificial delay
+    const waitForFonts = async () => {
+      try {
+        if (document.fonts?.ready) {
+          await document.fonts.ready;
+        }
+      } catch {
+        // fonts API not supported — continue anyway
+      } finally {
+        if (mounted) setFontsReady(true);
+      }
+    };
+
+    waitForFonts();
+    return () => { mounted = false; };
+  }, []);
+
+  if (!fontsReady) return <GlobalLoader />;
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/project/:id" element={<ProjectDetails />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <ErrorBoundary>
+      <BrowserRouter>
+        <Suspense fallback={<GlobalLoader />}>
+          <Routes>
+            <Route path="/"           element={<MainPage />} />
+            <Route path="/project/:id" element={<ProjectDetails />} />
+            <Route path="*"           element={<NotFound />} />
+          </Routes>
+        </Suspense>
+      </BrowserRouter>
+    </ErrorBoundary>
   );
 };
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Github, Linkedin, Instagram, ArrowDown, X,
+  Github, Linkedin, Instagram, ArrowDown, X, Download, QrCode,
   Activity, Brain, Radio, Map, BarChart2, Heart,
   Mail, Target, PlayCircle, Cpu, Shield, Sparkles, Zap, ChevronRight
 } from 'lucide-react';
@@ -11,8 +11,143 @@ const scrollTo = (id) => {
   if (el) el.scrollIntoView({ behavior: 'smooth' });
 };
 
+/* ─── QR Code Modal ─────────────────────────────────────────────────────── */
+const QRModal = ({ isOpen, onClose }) => {
+  useEffect(() => {
+    const handleKey = (e) => { if (e.key === 'Escape') onClose(); };
+    if (isOpen) {
+      document.addEventListener('keydown', handleKey);
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.removeEventListener('keydown', handleKey);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen, onClose]);
+
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/sponsor-qr.png';
+    link.download = 'sponsor-qr.png';
+    link.click();
+  };
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          {/* Backdrop */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            onClick={onClose}
+            className="fixed inset-0 z-[200] bg-black/75 backdrop-blur-sm"
+          />
+
+          {/* QR Panel */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.85, y: 20 }}
+            transition={{ type: 'spring', damping: 26, stiffness: 240 }}
+            className="fixed inset-0 z-[201] flex items-center justify-center p-4 pointer-events-none"
+          >
+            <div
+              className="pointer-events-auto relative w-full max-w-sm rounded-[28px] overflow-hidden"
+              style={{
+                background: 'rgba(8, 10, 25, 0.92)',
+                border: '1px solid rgba(139,92,246,0.35)',
+                backdropFilter: 'blur(30px)',
+                WebkitBackdropFilter: 'blur(30px)',
+                boxShadow: '0 0 80px rgba(139,92,246,0.2), 0 32px 64px rgba(0,0,0,0.6)',
+              }}
+            >
+              {/* Glow accents */}
+              <div className="absolute -top-20 -right-20 w-52 h-52 bg-[#8b5cf6] rounded-full opacity-10 blur-[60px] pointer-events-none" />
+              <div className="absolute -bottom-16 -left-16 w-44 h-44 bg-[#3b82f6] rounded-full opacity-10 blur-[60px] pointer-events-none" />
+
+              {/* Header */}
+              <div className="relative z-10 flex items-center justify-between px-6 pt-6 pb-4">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg,#8b5cf6,#3b82f6)' }}>
+                    <QrCode size={16} className="text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold text-[15px] leading-tight">Scan to Sponsor</h3>
+                    <p className="text-[#64748b] text-[11px]">UPI / Payment QR Code</p>
+                  </div>
+                </div>
+                <button
+                  onClick={onClose}
+                  className="w-8 h-8 rounded-full flex items-center justify-center text-[#64748b] hover:text-white hover:bg-white/10 transition-all duration-200"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+
+              {/* QR Image */}
+              <div className="relative z-10 px-6 pb-2">
+                <div
+                  className="relative rounded-2xl overflow-hidden flex items-center justify-center"
+                  style={{
+                    background: 'white',
+                    padding: '16px',
+                    boxShadow: '0 0 40px rgba(139,92,246,0.25)',
+                  }}
+                >
+                  <img
+                    src="/sponsor-qr.png"
+                    alt="Sponsor QR Code"
+                    className="w-full max-w-[240px] mx-auto block"
+                    style={{ imageRendering: 'pixelated' }}
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.nextSibling.style.display = 'flex';
+                    }}
+                  />
+                  {/* Fallback if no QR image */}
+                  <div
+                    className="hidden w-[240px] h-[240px] items-center justify-center flex-col gap-3 text-center"
+                    style={{ display: 'none' }}
+                  >
+                    <QrCode size={64} className="text-gray-400" />
+                    <p className="text-gray-500 text-sm font-medium">Add your QR code<br/>as <code className="bg-gray-100 px-1 rounded text-xs">public/sponsor-qr.png</code></p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Footer */}
+              <div className="relative z-10 px-6 py-5 flex flex-col gap-3">
+                <p className="text-[#64748b] text-[12px] text-center">
+                  Scan with any UPI app · PhonePe · GPay · Paytm
+                </p>
+                <button
+                  onClick={handleDownload}
+                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-[14px] text-white transition-all hover:scale-[1.02] active:scale-[0.98]"
+                  style={{ background: 'linear-gradient(135deg, #8b5cf6, #3b82f6)', boxShadow: '0 0 20px rgba(139,92,246,0.4)' }}
+                >
+                  <Download size={16} />
+                  Download QR Code
+                </button>
+                <button
+                  onClick={onClose}
+                  className="w-full py-2.5 rounded-xl text-[13px] font-medium text-[#64748b] hover:text-white hover:bg-white/5 transition-all duration-200"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
+  );
+};
+
 /* ─── Premium Glass Modal ────────────────────────────────────────────────── */
-const ProjectModal = ({ isOpen, onClose }) => {
+const ProjectModal = ({ isOpen, onClose, onSponsorClick }) => {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -164,7 +299,9 @@ const ProjectModal = ({ isOpen, onClose }) => {
                       </p>
 
                       <div className="flex flex-wrap justify-center gap-4 w-full max-w-lg">
-                        <button className="flex-1 min-w-[160px] flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl font-bold text-[15px] text-white transition-all shadow-[0_0_20px_rgba(139,92,246,0.5)] hover:shadow-[0_0_30px_rgba(139,92,246,0.7)] hover:scale-105"
+                        <button
+                          onClick={() => { onSponsorClick?.(); }}
+                          className="flex-1 min-w-[160px] flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl font-bold text-[15px] text-white transition-all shadow-[0_0_20px_rgba(139,92,246,0.5)] hover:shadow-[0_0_30px_rgba(139,92,246,0.7)] hover:scale-105"
                           style={{ background: 'linear-gradient(135deg, #8b5cf6, #3b82f6)' }}>
                           <Heart size={18} /> Sponsor
                         </button>
@@ -190,6 +327,7 @@ const ProjectModal = ({ isOpen, onClose }) => {
 /* ─── Main Home Component ────────────────────────────────────────────────── */
 const Home = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isQROpen, setIsQROpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -214,8 +352,7 @@ const Home = () => {
     <>
       <section
         id="home"
-        style={{ minHeight: '100vh', overflowX: 'clip' }}
-        className="flex items-center justify-center relative space-section pt-16 bg-[#03040b]"
+        className="flex items-center justify-center relative space-section pt-16 bg-[#03040b] min-h-screen w-full overflow-hidden"
       >
         {/* Background Visuals */}
         <div className="absolute inset-0 pointer-events-none">
@@ -224,12 +361,21 @@ const Home = () => {
           {/* Grid Pattern */}
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCI+CiAgPHBhdGggZD0iTTYwIDBMMCAwTDAgNjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjAyKSIgc3Ryb2tlLXdpZHRoPSIxIi8+Cjwvc3ZnPg==')] opacity-50" />
           {/* Glowing Background Orbs */}
-          <motion.div animate={{ scale: [1, 1.1, 1], opacity: [0.15, 0.25, 0.15] }} transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute -top-10 left-[10%] w-[500px] h-[500px] bg-[#8b5cf6] rounded-full blur-[120px]" />
-          <motion.div animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }} transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-            className="absolute bottom-10 right-[10%] w-[600px] h-[600px] bg-[#3b82f6] rounded-full blur-[150px]" />
-          <motion.div animate={{ scale: [1, 1.15, 1], opacity: [0.05, 0.12, 0.05] }} transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut', delay: 4 }}
-            className="absolute top-[40%] left-[50%] w-[400px] h-[400px] bg-[#06b6d4] rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2" />
+          <motion.div
+            animate={{ scale: [1, 1.1, 1], opacity: [0.15, 0.22, 0.15] }}
+            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+            style={{ willChange: 'transform, opacity', transform: 'translateZ(0)' }}
+            className="absolute -top-10 left-[10%] w-[500px] h-[500px] bg-[#8b5cf6] rounded-full blur-[120px] pointer-events-none" />
+          <motion.div
+            animate={{ scale: [1, 1.15, 1], opacity: [0.08, 0.18, 0.08] }}
+            transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+            style={{ willChange: 'transform, opacity', transform: 'translateZ(0)' }}
+            className="absolute bottom-10 right-[10%] w-[600px] h-[600px] bg-[#3b82f6] rounded-full blur-[150px] pointer-events-none" />
+          <motion.div
+            animate={{ scale: [1, 1.12, 1], opacity: [0.04, 0.10, 0.04] }}
+            transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut', delay: 4 }}
+            style={{ willChange: 'transform, opacity', transform: 'translateZ(0)' }}
+            className="absolute top-[40%] left-[50%] w-[400px] h-[400px] bg-[#06b6d4] rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full mb-16 lg:mb-0 lg:py-16">
@@ -237,9 +383,9 @@ const Home = () => {
 
             {/* ── Left Content: Intro ────────────────────────────────────────── */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
               className="lg:pr-4 flex flex-col items-center lg:items-start text-center lg:text-left"
             >
               <div className="pt-8 sm:pt-12 lg:pt-0" />
@@ -517,20 +663,13 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Render Modal */}
-      <ProjectModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      {/* Render Project Modal */}
+      <ProjectModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onSponsorClick={() => setIsQROpen(true)} />
 
-      {/* Dynamic styles mapping for custom animations */}
-      <style dangerouslySetInnerHTML={{
-        __html: `
-        @keyframes shimmer {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
-        }
-        .shimmer-animation {
-          animation: shimmer 2s infinite linear;
-        }
-      `}} />
+      {/* Render QR Sponsor Modal */}
+      <QRModal isOpen={isQROpen} onClose={() => setIsQROpen(false)} />
+
+      {/* shimmer keyframe is defined in index.css — no dangerouslySetInnerHTML needed */}
     </>
   );
 };

@@ -11,22 +11,24 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="glass border-t border-glass-border mt-20 backdrop-blur-nebula">
+    <footer className="relative w-full overflow-hidden glass border-t border-glass-border mt-20 backdrop-blur-nebula">
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-accent-primary/5 to-transparent pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="flex flex-col items-center md:items-start text-center md:text-left"
+            viewport={{ once: true, margin: "-50px" }}
+            className="flex flex-col items-center md:items-start text-center md:text-left w-full"
           >
             <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#a855f7] via-[#6366f1] to-[#22d3ee] mb-4">
               Mohammed Adil
             </h3>
             <p className="text-text-secondary mb-6 max-w-sm">
-              Engineering Graduate & Full-Stack Developer passionate about building modern web applications, IoT systems, and innovative technology solutions.
+              Engineering Graduate & Full-Stack Developer
+              <br /><br />
+              Passionate about AI, IoT systems, Data Science, and building secure, high-performance applications.
             </p>
             <div className="flex gap-4">
               {socialLinks.map((social, index) => (
@@ -48,11 +50,11 @@ const Footer = () => {
 
           {/* Quick Links */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
             transition={{ delay: 0.1 }}
-            className="flex flex-col items-center md:items-start text-center md:text-left"
+            className="flex flex-col items-center md:items-start text-center md:text-left w-full"
           >
             <h4 className="text-lg font-semibold text-text-primary mb-4">Quick Links</h4>
             <ul className="space-y-2">
@@ -71,11 +73,11 @@ const Footer = () => {
 
           {/* Contact Info */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
             transition={{ delay: 0.2 }}
-            className="flex flex-col items-center md:items-start text-center md:text-left"
+            className="flex flex-col items-center md:items-start text-center md:text-left w-full"
           >
             <h4 className="text-lg font-semibold text-text-primary mb-4">Get In Touch</h4>
             <div className="space-y-2 text-text-secondary">

@@ -41,7 +41,20 @@ const TechStackCard = ({ tech, index }) => {
       'Arduino': { icon: '♾️', color: '#00979D', glow: 'rgba(0, 151, 157, 0.3)' },
       'QGIS': { icon: '🗺️', color: '#589632', glow: 'rgba(88, 150, 50, 0.3)' },
       'GRASS GIS': { icon: '🌿', color: '#008000', glow: 'rgba(0, 128, 0, 0.3)' },
-      'PCA': { icon: '📊', color: '#FFCC00', glow: 'rgba(255, 204, 0, 0.3)' }
+      'PCA': { icon: '📊', color: '#FFCC00', glow: 'rgba(255, 204, 0, 0.3)' },
+
+      // AI & Agentic Tools
+      'Antigravity': { icon: '🌌', color: '#7C7CFF', glow: 'rgba(124, 124, 255, 0.3)' },
+      'Claude': { icon: '🧠', color: '#D97757', glow: 'rgba(217, 119, 87, 0.3)' },
+      'Google AI Studio': { icon: '✨', color: '#4285F4', glow: 'rgba(66, 133, 244, 0.3)' },
+      'Cursor': { icon: '🖱️', color: '#FFFFFF', glow: 'rgba(255, 255, 255, 0.3)' },
+      'Windsurf': { icon: '🏄‍♂️', color: '#00E5FF', glow: 'rgba(0, 229, 255, 0.3)' },
+      'Firebase': { icon: '🔥', color: '#FFCA28', glow: 'rgba(255, 202, 40, 0.3)' },
+      'OpenAI': { icon: '🤖', color: '#10A37F', glow: 'rgba(16, 163, 127, 0.3)' },
+      'DeepSeek': { icon: '🐳', color: '#0055FF', glow: 'rgba(0, 85, 255, 0.3)' },
+      'Hugging Face': { icon: '🤗', color: '#FFD21E', glow: 'rgba(255, 210, 30, 0.3)' },
+      'LangChain': { icon: '🦜', color: '#1C3C3C', glow: 'rgba(28, 60, 60, 0.3)' },
+      'GitHub Copilot': { icon: '✈️', color: '#FAFBFC', glow: 'rgba(250, 251, 252, 0.3)' }
     };
 
     return details[techName] || { icon: '💻', color: '#7C7CFF', glow: 'rgba(124, 124, 255, 0.3)' };
@@ -51,13 +64,13 @@ const TechStackCard = ({ tech, index }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
+      initial={{ opacity: 0, scale: 0.92 }}
       whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.03 }}
+      viewport={{ once: true, margin: '-30px' }}
+      transition={{ duration: 0.35, delay: Math.min(index * 0.03, 0.3) }}
       whileHover={{
-        y: -10,
-        transition: { duration: 0.3 }
+        y: -6,
+        transition: { duration: 0.25, ease: [0.34, 1.56, 0.64, 1] }
       }}
       className="relative group p-[1px] rounded-2xl transition-all duration-300"
     >

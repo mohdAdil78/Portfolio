@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, ArrowRight, Layers } from 'lucide-react';
+import { ExternalLink, Github, ArrowRight, Layers, Brain, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const ProjectCard = ({ project, index }) => {
@@ -26,8 +26,8 @@ const ProjectCard = ({ project, index }) => {
         boxShadow: '0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.07)',
       }}
       onHoverStart={e => {
-        e.currentTarget.style.borderColor = 'rgba(124,124,255,0.40)';
-        e.currentTarget.style.boxShadow = '0 8px 48px rgba(0,0,0,0.5), 0 0 40px rgba(124,124,255,0.18), inset 0 1px 0 rgba(255,255,255,0.10)';
+        e.currentTarget.style.borderColor = 'rgba(168,85,247,0.50)';
+        e.currentTarget.style.boxShadow = '0 8px 48px rgba(0,0,0,0.5), 0 0 40px rgba(168,85,247,0.25), inset 0 1px 0 rgba(255,255,255,0.15)';
       }}
       onHoverEnd={e => {
         e.currentTarget.style.borderColor = 'rgba(255,255,255,0.10)';
@@ -40,6 +40,7 @@ const ProjectCard = ({ project, index }) => {
           style={{ background: 'radial-gradient(ellipse at center, rgba(124,124,255,0.12) 0%, transparent 70%)' }} />
         {!imgError ? (
           <img src={project.image} alt={project.title}
+            loading="lazy"
             className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             onError={() => setImgError(true)} />
         ) : (
@@ -57,7 +58,33 @@ const ProjectCard = ({ project, index }) => {
             +{project.technologies.length - 4} more
           </div>
         )}
+        {project.badge && (
+          <div className="absolute top-3 left-3 z-20 px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 transition-transform duration-300 group-hover:scale-105"
+            style={{ 
+              background: 'linear-gradient(135deg, rgba(168,85,247,0.9) 0%, rgba(56,189,248,0.9) 100%)', 
+              color: 'white',
+              boxShadow: '0 4px 12px rgba(168,85,247,0.5)',
+              backdropFilter: 'blur(8px)',
+              border: '1px solid rgba(255,255,255,0.2)'
+            }}>
+            {project.badge.toLowerCase().includes('ai') ? <Brain size={14} /> : <Sparkles size={14} />}
+            {project.badge}
+          </div>
+        )}
       </div>
+
+      {/* Animated Gradient Border */}
+      <div className="absolute inset-0 rounded-[22px] pointer-events-none z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
+           style={{
+             background: 'linear-gradient(45deg, #a855f7, #38bdf8, #a855f7)',
+             backgroundSize: '200% 200%',
+             animation: 'gradientFlow 3s ease infinite',
+             WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+             WebkitMaskComposite: 'xor',
+             maskComposite: 'exclude',
+             padding: '1px'
+           }} 
+      />
 
       {/* ── Card Body ─────────────────────────────────────────── */}
       <div className="flex flex-col flex-1 px-6 pt-5 pb-6 gap-4">
@@ -120,7 +147,7 @@ const ProjectCard = ({ project, index }) => {
           {hasCode && (
             <motion.a href={project.githubLink} target="_blank" rel="noopener noreferrer"
               onClick={e => e.stopPropagation()}
-              whileHover={{ scale: 1.08, rotate: 3 }} whileTap={{ scale: 0.93 }} title="Source Code"
+              whileHover={{ scale: 1.1, rotate: 5, boxShadow: '0 0 20px rgba(168,85,247,0.4)' }} whileTap={{ scale: 0.93 }} title="Source Code"
               className="flex items-center justify-center rounded-xl transition-all duration-300 flex-shrink-0"
               style={{ width: '40px', height: '40px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.14)', color: 'rgba(148,163,184,0.8)' }}
               onMouseEnter={e => { e.currentTarget.style.background = 'rgba(168,85,247,0.12)'; e.currentTarget.style.borderColor = 'rgba(168,85,247,0.4)'; e.currentTarget.style.color = '#A855F7'; }}

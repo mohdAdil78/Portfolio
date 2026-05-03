@@ -31,8 +31,7 @@ const About = () => {
   return (
     <section
       id="about"
-      style={{ minHeight: '100vh', overflowX: 'clip' }}
-      className="py-20 relative space-section pt-28"
+      className="py-20 relative space-section pt-28 min-h-screen w-full overflow-hidden"
     >
       <div className="absolute top-10 right-10 w-64 h-64 bg-accent-secondary/10 rounded-full blur-2xl drifting-element" />
       <div className="absolute bottom-10 left-10 w-64 h-64 bg-glow-highlight/10 rounded-full blur-2xl drifting-element" style={{ animationDelay: '10s' }} />
@@ -52,6 +51,7 @@ const About = () => {
                 <img
                   src="/profile.jpg"
                   alt="Mohammed Adil - Profile Photo"
+                  loading="lazy"
                   className="w-full h-full object-cover object-center"
                   onError={(e) => {
                     e.target.style.display = 'none';
@@ -70,7 +70,7 @@ const About = () => {
             <div className="p-8">
               <h3 className="text-2xl font-bold text-text-primary mb-4">Passionate Software & Technology Enthusiast</h3>
               <p className="text-text-secondary leading-relaxed mb-4">
-                I'm an engineering graduate currently working as a Software Developer at Avedis, where I focus on building and maintaining scalable web platforms and applications. My journey started with curiosity and grew into hands-on experience in full-stack development, server infrastructure, and geospatial analysis.
+                I'm an engineering graduate currently working as a Software Developer at Amlak Al Arabia, building and maintaining scalable web applications. I am involved in server management, deployment, and performance optimization, while also working on prompt engineering, SEO improvements, and cybersecurity projects. My journey started with curiosity and grew into hands-on experience in full-stack development, server infrastructure, and geospatial analysis.
               </p>
               <p className="text-text-secondary leading-relaxed mb-4">
                 I have worked on diverse projects, from developing responsive real estate platforms using Next.js to winning 1st place for a Dual-Axis Solar Tracking System at a project exhibition in Mangalore. I also completed a GIS research internship with IISc and IEEE, conducting in-depth satellite imagery analysis using QGIS and Google Cloud.

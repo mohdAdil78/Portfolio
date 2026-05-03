@@ -337,7 +337,7 @@ const EducationTab = () => (
     initial={{ opacity: 0, y: 16 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5 }}
-    style={{ width: '100%', overflowX: 'clip', paddingTop: '0.5rem' }}
+    className="w-full overflow-hidden pt-2"
   >
     {/* ── Section label ── */}
     <div className="flex items-center justify-center gap-3 mb-12">

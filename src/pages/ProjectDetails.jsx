@@ -255,6 +255,7 @@ const ProjectDetails = () => {
                   <div className="ml-3 flex-1 h-4 rounded" style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.08)' }} />
                 </div>
                 <img src={project.image} alt={`${project.title} dashboard preview`}
+                  loading="lazy"
                   className="w-full object-cover block" style={{ maxHeight: '340px' }}
                   onError={e => { e.target.style.display = 'none'; e.target.nextSibling?.classList.remove('hidden'); }} />
                 <div className="hidden h-52 flex items-center justify-center" style={{ background: 'rgba(124,124,255,0.06)' }}>
