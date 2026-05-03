@@ -44,7 +44,7 @@ if (missingEnvVars.length > 0) {
 }
 
 // Create Nodemailer transporter
-const transporter = nodemailer.createTransporter({
+const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: process.env.EMAIL_USER,
@@ -201,7 +201,7 @@ app.get('/api/health', (req, res) => {
 });
 
 // Handle 404
-app.use('*', (req, res) => {
+app.use((req, res) => {
   res.status(404).json({
     success: false,
     message: 'Endpoint not found'
